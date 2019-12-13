@@ -13,7 +13,6 @@ public class PawnMove : MonoBehaviour
     GameObject manager;
     int moveBy;
     GameObject moveTo;
-    GameObject selectBoard;
     bool start = true;
     public char color;
     float timer = 0.0f;
@@ -44,7 +43,17 @@ public class PawnMove : MonoBehaviour
                             if (hit.transform.gameObject.GetComponent<PawnMove>().pawnNumber == pawnNumber)
                             {
                                 movedPawnNumber = pawnNumber;
-                                selectBoard = manager.GetComponent<GameManager>().board_[findId(moveBy)];
+                                switch(moveBy)
+                                {
+                                    case 4:
+                                        manager.GetComponent<GameManager>().board_[findId(-moveBy)].GetComponent<Square>().selected = true;
+                                        break;
+                                    case 7:
+                                        break;
+                                    default:
+                                        manager.GetComponent<GameManager>().board_[findId(moveBy)].GetComponent<Square>().selected = true;
+                                        break;
+                                }
                                 lightBoard();
                             }
                         }
@@ -74,6 +83,12 @@ public class PawnMove : MonoBehaviour
                     id = blue[0] + 1;
                     break;
             }
+        }
+        if (i < 0)
+        {
+            if (start)
+                id += 2;
+            return (id + i + 60) % 60;
         }
         switch (color)
         {
@@ -133,9 +148,13 @@ public class PawnMove : MonoBehaviour
         for (int j = 0; j < 60 + 4 * 7; j++)
         {
             if (manager.GetComponent<GameManager>().board_[j] != null)
-                manager.GetComponent<GameManager>().board_[j].GetComponent<SpriteRenderer>().color = unSelected;
+            {
+                if (manager.GetComponent<GameManager>().board_[j].GetComponent<Square>().selected)
+                    manager.GetComponent<GameManager>().board_[j].GetComponent<SpriteRenderer>().color = selected;
+                else
+                    manager.GetComponent<GameManager>().board_[j].GetComponent<SpriteRenderer>().color = unSelected;
+            }
         }
-        selectBoard.GetComponent<SpriteRenderer>().color = selected;
     }
     // Update is called once per frame
     void Update()
@@ -144,13 +163,23 @@ public class PawnMove : MonoBehaviour
         {
             if (movedPawnNumber == pawnNumber)
             {
-                //if((moveBy + currentID) % 60 < moveBy % 60)
-                //Debug.Log(moveBy + currentID);
-                moveTo = selectBoard;
-                selectBoard = null;
-                timer = 1.5f;
-                if (start) start = false;
-                selectionMade = true;
+                if(Selected() == 1)
+                {
+                    for (int j = 0; j < 60 + 4 * 7; j++)
+                    {
+                        if (manager.GetComponent<GameManager>().board_[j] != null)
+                        {
+                            if (manager.GetComponent<GameManager>().board_[j].GetComponent<Square>().selected)
+                            {
+                                moveTo = manager.GetComponent<GameManager>().board_[j];
+                                manager.GetComponent<GameManager>().board_[j].GetComponent<Square>().selected = false;
+                            }
+                        }
+                    }
+                    timer = 1.5f;
+                    if (start) start = false;
+                    selectionMade = true;
+                }
             }
             else
             {
@@ -161,7 +190,7 @@ public class PawnMove : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Alpha4))
             {
-                moveBy = -4;
+                moveBy = 4;
             }
             if (Input.GetKeyDown(KeyCode.Alpha5))
             {
@@ -208,5 +237,18 @@ public class PawnMove : MonoBehaviour
             }
             timer -= Time.deltaTime;
         }
+    }
+    int Selected()
+    {
+        int numberOfPiecesSelected = 0;
+        for (int j = 0; j < 60 + 4 * 7; j++)
+        {
+            if (manager.GetComponent<GameManager>().board_[j] != null)
+            {
+                if (manager.GetComponent<GameManager>().board_[j].GetComponent<Square>().selected)
+                    numberOfPiecesSelected++;
+            }
+        }
+        return numberOfPiecesSelected;
     }
 }
