@@ -8,9 +8,10 @@ public class PawnMove : MonoBehaviour
     public Color selected;
     public Color unSelected;
     public int pawnNumber;
-    static int movedPawnNumber = -1;
+    static List<int> movedPawnNumber = new List<int>();
     static bool selectionMade = false;
-    GameObject manager;
+    static int sevenMove = 0;
+    GameManager manager;
     int moveBy;
     GameObject moveTo;
     bool start = true;
@@ -24,36 +25,78 @@ public class PawnMove : MonoBehaviour
     void Start()
     {
         currentID = -1;
-        manager = GameObject.FindWithTag("Manager");
+        manager = GameObject.FindWithTag("Manager").GetComponent<GameManager>();
     }
-    private void OnMouseDown()
+    private void MyOnMouseDown()
     {
+        if (!Input.GetMouseButtonDown(0)) return;
+
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
         {
-            if (hit.transform.gameObject.GetComponent<PawnMove>() != null)
+            if (manager != null)
             {
-                if (manager != null)
+                if (hit.transform.gameObject.GetComponent<PawnMove>() != null)
                 {
-                    if (manager.GetComponent<GameManager>().turn == 0 && color == 'y' || manager.GetComponent<GameManager>().turn == 1 && color == 'g' || manager.GetComponent<GameManager>().turn == 2 && color == 'r' || manager.GetComponent<GameManager>().turn == 3 && color == 'b')
+                    if (manager.turn == 0 && color == 'y' || manager.turn == 1 && color == 'g' || manager.turn == 2 && color == 'r' || manager.turn == 3 && color == 'b')
                     {
                         if (moveBy != 0 && !selectionMade)
                         {
                             if (hit.transform.gameObject.GetComponent<PawnMove>().pawnNumber == pawnNumber)
                             {
-                                movedPawnNumber = pawnNumber;
+                                if(movedPawnNumber.Count > 0)
+                                    movedPawnNumber.RemoveAt(movedPawnNumber.Count - 1);
+                                movedPawnNumber.Add(pawnNumber);
                                 switch(moveBy)
                                 {
                                     case 4:
-                                        manager.GetComponent<GameManager>().board_[findId(-moveBy)].GetComponent<Square>().selected = true;
+                                        manager.board_[findId(-4)].GetComponent<Square>().selected = true;
                                         break;
                                     case 7:
+                                        if(movedPawnNumber.Count > 1)
+                                        {
+
+
+                                        }
+                                        else
+                                        {
+                                            for (int i = 1; i <= 7; i++)
+                                            {
+                                                manager.board_[findId(i)].GetComponent<Square>().selected = true;
+                                            }
+                                        }
                                         break;
                                     default:
-                                        manager.GetComponent<GameManager>().board_[findId(moveBy)].GetComponent<Square>().selected = true;
+                                        manager.board_[findId(moveBy)].GetComponent<Square>().selected = true;
                                         break;
                                 }
+                                lightBoard();
+                            }
+                        }
+                    }
+                }
+                if (hit.transform.gameObject.GetComponent<Square>() != null)
+                {
+                    if(moveBy == 7)
+                    {
+                        if (movedPawnNumber.Count > 0)
+                        {
+                            bool on = false;
+                            for (int i = 1; i <= 7; i++)
+                            {
+                                if (manager.board_[findId(i)] == hit.transform.gameObject)
+                                {
+                                    on = true;
+                                }
+                            }
+                            if (on)
+                            {
+                                for (int i = 1; i <= 7; i++)
+                                {
+                                    manager.board_[findId(moveBy)].GetComponent<Square>().selected = false;
+                                }
+                                // hit.transform.GetComponent<Square>().selected = true;
                                 lightBoard();
                             }
                         }
@@ -90,56 +133,29 @@ public class PawnMove : MonoBehaviour
                 id += 2;
             return (id + i + 60) % 60;
         }
+        int[] number = new int[2];
         switch (color)
         {
             case 'y':
-                if (id > 60 - 1 + yellow[1])
-                {
-                    // Don't have home yet
-                    // return (id + i < 60 + 7 - 1 + yellow[1]) ? id + i : id;
-                    return (id + i < 60 + 7 - 1 - 1 + yellow[1]) ? id + i : id;
-                }
-                else if ((id + i + 60 - yellow[0] - 1) % 60 < (id + 60 - yellow[0] - 1) % 60)
-                {
-                    return ((id + i) % 60 + 60 - yellow[0] + yellow[1] - 1);
-                }
+                number = yellow;
                 break;
             case 'g':
-                if (id > 60 - 1 + green[1])
-                {
-                    // Don't have home yet
-                    // return (id + i < 60 + 7 - 1 + green[1]) ? id + i : id;
-                    return (id + i < 60 + 7 - 1 - 1 + green[1]) ? id + i : id;
-                }
-                else if ((id + i + 60 - green[0] - 1) % 60 < (id + 60 - green[0] - 1) % 60)
-                {
-                    return ((id + i) % 60 + 60 - green[0] + green[1] - 1);
-                }
+                number = green;
                 break;
             case 'r':
-                if (id > 60 - 1 + red[1])
-                {
-                    // Don't have home yet
-                    // return (id + i < 60 + 7 - 1 + red[1]) ? id + i : id;
-                    return (id + i < 60 + 7 - 1 - 1 + red[1]) ? id + i : id;
-                }
-                else if ((id + i + 60 - red[0] - 1) % 60 < (id + 60 - red[0] - 1) % 60)
-                {
-                    return ((id + i) % 60 + 60 - red[0] + red[1] - 1);
-                }
+                number = red;
                 break;
             case 'b':
-                if (id > 60 - 1 + blue[1])
-                {
-                    // Don't have home yet
-                    // return (id + i < 60 + 7 - 1 + blue[1]) ? id + i : id;
-                    return (id + i < 60 + 7 - 1 - 1 + blue[1]) ? id + i : id;
-                }
-                else if ((id + i + 60 - blue[0] - 1) % 60 < (id + 60 - blue[0] - 1) % 60)
-                {
-                    return ((id + i) % 60 + 60 - blue[0] + blue[1] - 1);
-                }
+                number = blue;
                 break;
+        }
+        if (id > 60 - 1 + number[1])
+        {
+            return (id + i < 60 + 7 - 1 - 1 + number[1]) ? id + i : id;
+        }
+        else if ((id + i + 60 - number[0] - 1) % 60 < (id + 60 - number[0] - 1) % 60)
+        {
+            return ((id + i) % 60 + 60 - number[0] + number[1] - 1);
         }
         return (id + i) % 60;
     }
@@ -147,38 +163,50 @@ public class PawnMove : MonoBehaviour
     {
         for (int j = 0; j < 60 + 4 * 7; j++)
         {
-            if (manager.GetComponent<GameManager>().board_[j] != null)
+            if (manager.board_[j] != null)
             {
-                if (manager.GetComponent<GameManager>().board_[j].GetComponent<Square>().selected)
-                    manager.GetComponent<GameManager>().board_[j].GetComponent<SpriteRenderer>().color = selected;
+                if (manager.board_[j].GetComponent<Square>().selected)
+                    manager.board_[j].GetComponent<SpriteRenderer>().color = selected;
                 else
-                    manager.GetComponent<GameManager>().board_[j].GetComponent<SpriteRenderer>().color = unSelected;
+                    manager.board_[j].GetComponent<SpriteRenderer>().color = unSelected;
             }
         }
     }
     // Update is called once per frame
     void Update()
     {
+        MyOnMouseDown();
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (movedPawnNumber == pawnNumber)
+            if(movedPawnNumber.Count > 0)
             {
-                if(Selected() == 1)
+                if (movedPawnNumber[movedPawnNumber.Count - 1] == pawnNumber)
                 {
-                    for (int j = 0; j < 60 + 4 * 7; j++)
+                    if (Selected() == 1)
                     {
-                        if (manager.GetComponent<GameManager>().board_[j] != null)
+                        for (int j = 0; j < 60 + 4 * 7; j++)
                         {
-                            if (manager.GetComponent<GameManager>().board_[j].GetComponent<Square>().selected)
+                            if (manager.board_[j] != null)
                             {
-                                moveTo = manager.GetComponent<GameManager>().board_[j];
-                                manager.GetComponent<GameManager>().board_[j].GetComponent<Square>().selected = false;
+                                if (manager.board_[j].GetComponent<Square>().selected)
+                                {
+                                    moveTo = manager.board_[j];
+                                    manager.board_[j].GetComponent<Square>().selected = false;
+                                }
                             }
                         }
+                        if (movedPawnNumber.Count > ((moveBy == 7) ? 1 : 0))
+                        {
+                            if (start) start = false;
+                            timer = 1.5f;
+                            selectionMade = true;
+                        }
                     }
-                    timer = 1.5f;
-                    if (start) start = false;
-                    selectionMade = true;
+                }
+                else
+                {
+                    moveBy = 0;
                 }
             }
             else
@@ -200,6 +228,10 @@ public class PawnMove : MonoBehaviour
             {
                 moveBy = 6;
             }
+            if (Input.GetKeyDown(KeyCode.Alpha7))
+            {
+                moveBy = 7;
+            }
             if (Input.GetKeyDown(KeyCode.Alpha8))
             {
                 moveBy = 8;
@@ -209,7 +241,7 @@ public class PawnMove : MonoBehaviour
                 moveBy = 9;
             }
         }
-        if (moveTo != null && movedPawnNumber > -1 && selectionMade)
+        if (moveTo != null && selectionMade)
         {
             moveTo.GetComponent<SpriteRenderer>().color = unSelected;
             if (timer > 1.2f)
@@ -231,9 +263,9 @@ public class PawnMove : MonoBehaviour
                 currentID = moveTo.GetComponent<Square>().squareID;
                 moveBy = 0;
                 moveTo = null;
-                movedPawnNumber = -1;
+                movedPawnNumber.Clear();
                 selectionMade = false;
-                manager.GetComponent<GameManager>().turn = ++manager.GetComponent<GameManager>().turn % 2;
+                manager.turn = ++manager.turn % 2;
             }
             timer -= Time.deltaTime;
         }
@@ -243,9 +275,9 @@ public class PawnMove : MonoBehaviour
         int numberOfPiecesSelected = 0;
         for (int j = 0; j < 60 + 4 * 7; j++)
         {
-            if (manager.GetComponent<GameManager>().board_[j] != null)
+            if (manager.board_[j] != null)
             {
-                if (manager.GetComponent<GameManager>().board_[j].GetComponent<Square>().selected)
+                if (manager.board_[j].GetComponent<Square>().selected)
                     numberOfPiecesSelected++;
             }
         }

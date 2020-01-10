@@ -54,7 +54,7 @@ LightmapSettings:
     m_EnableBakedLightmaps: 1
     m_EnableRealtimeLightmaps: 0
   m_LightmapEditorSettings:
-    serializedVersion: 10
+    serializedVersion: 12
     m_Resolution: 2
     m_BakeResolution: 10
     m_AtlasSize: 512
@@ -62,6 +62,7 @@ LightmapSettings:
     m_AOMaxDistance: 1
     m_CompAOExponent: 1
     m_CompAOExponentDirect: 0
+    m_ExtractAmbientOcclusion: 0
     m_Padding: 2
     m_LightmapParameters: {fileID: 0}
     m_LightmapsBakeMode: 1
@@ -76,10 +77,16 @@ LightmapSettings:
     m_PVRDirectSampleCount: 32
     m_PVRSampleCount: 256
     m_PVRBounces: 2
+    m_PVREnvironmentSampleCount: 256
+    m_PVREnvironmentReferencePointCount: 2048
+    m_PVRFilteringMode: 2
+    m_PVRDenoiserTypeDirect: 0
+    m_PVRDenoiserTypeIndirect: 0
+    m_PVRDenoiserTypeAO: 0
     m_PVRFilterTypeDirect: 0
     m_PVRFilterTypeIndirect: 0
     m_PVRFilterTypeAO: 0
-    m_PVRFilteringMode: 1
+    m_PVREnvironmentMIS: 0
     m_PVRCulling: 1
     m_PVRFilteringGaussRadiusDirect: 1
     m_PVRFilteringGaussRadiusIndirect: 5
@@ -88,6 +95,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
+    m_ExportTrainingData: 0
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -232,6 +240,7 @@ GameObject:
   - component: {fileID: 44887436}
   - component: {fileID: 44887438}
   - component: {fileID: 44887437}
+  - component: {fileID: 44887439}
   m_Layer: 0
   m_Name: Board Piece (70)
   m_TagString: Board
@@ -316,6 +325,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!65 &44887439
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 44887435}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &54392500
 GameObject:
   m_ObjectHideFlags: 0
@@ -327,6 +349,7 @@ GameObject:
   - component: {fileID: 54392503}
   - component: {fileID: 54392502}
   - component: {fileID: 54392501}
+  - component: {fileID: 54392504}
   m_Layer: 0
   m_Name: Board Piece (35)
   m_TagString: Board
@@ -411,6 +434,19 @@ Transform:
   m_Father: {fileID: 1350299668}
   m_RootOrder: 78
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!65 &54392504
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 54392500}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &64368165
 GameObject:
   m_ObjectHideFlags: 0
@@ -501,6 +537,7 @@ GameObject:
   - component: {fileID: 86593196}
   - component: {fileID: 86593195}
   - component: {fileID: 86593197}
+  - component: {fileID: 86593198}
   m_Layer: 0
   m_Name: Board Piece (43)
   m_TagString: Board
@@ -585,6 +622,19 @@ MonoBehaviour:
   squareID: 34
   selected: 0
   safeZone: 0
+--- !u!65 &86593198
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 86593194}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &134995270
 GameObject:
   m_ObjectHideFlags: 0
@@ -658,13 +708,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 134995270}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0.706594, y: -0.0013005569, z: -0.00022163344, w: 0.707618}
   m_LocalPosition: {x: -0.28, y: -7.05, z: -0.6}
   m_LocalScale: {x: 0.99912775, y: 0.9968086, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 89.852005, y: -56.114002, z: -56.027004}
 --- !u!114 &134995273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -778,6 +828,7 @@ GameObject:
   - component: {fileID: 162849294}
   - component: {fileID: 162849293}
   - component: {fileID: 162849295}
+  - component: {fileID: 162849296}
   m_Layer: 0
   m_Name: Board Piece (60)
   m_TagString: Board
@@ -862,6 +913,19 @@ MonoBehaviour:
   squareID: 29
   selected: 0
   safeZone: 0
+--- !u!65 &162849296
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 162849292}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &170076733
 GameObject:
   m_ObjectHideFlags: 0
@@ -887,12 +951,13 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 170076733}
   m_Enabled: 1
-  serializedVersion: 8
+  serializedVersion: 9
   m_Type: 1
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
+  m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
@@ -902,6 +967,24 @@ Light:
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.2
+    m_CullingMatrixOverride:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    m_UseCullingMatrixOverride: 0
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
@@ -909,12 +992,15 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+  m_RenderingLayerMask: 1
   m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
 --- !u!4 &170076735
@@ -942,6 +1028,7 @@ GameObject:
   - component: {fileID: 173836401}
   - component: {fileID: 173836402}
   - component: {fileID: 173836403}
+  - component: {fileID: 173836404}
   m_Layer: 0
   m_Name: Board Piece (36)
   m_TagString: Board
@@ -1026,6 +1113,19 @@ MonoBehaviour:
   squareID: 41
   selected: 0
   safeZone: 0
+--- !u!65 &173836404
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173836400}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &178538580
 GameObject:
   m_ObjectHideFlags: 0
@@ -1037,6 +1137,7 @@ GameObject:
   - component: {fileID: 178538581}
   - component: {fileID: 178538582}
   - component: {fileID: 178538583}
+  - component: {fileID: 178538584}
   m_Layer: 0
   m_Name: Board Piece (15)
   m_TagString: Board
@@ -1121,6 +1222,19 @@ MonoBehaviour:
   squareID: 4
   selected: 0
   safeZone: 0
+--- !u!65 &178538584
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178538580}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &221637154
 GameObject:
   m_ObjectHideFlags: 0
@@ -1132,6 +1246,7 @@ GameObject:
   - component: {fileID: 221637157}
   - component: {fileID: 221637156}
   - component: {fileID: 221637155}
+  - component: {fileID: 221637158}
   m_Layer: 0
   m_Name: Board Piece (47)
   m_TagString: Board
@@ -1216,6 +1331,19 @@ Transform:
   m_Father: {fileID: 1350299668}
   m_RootOrder: 72
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!65 &221637158
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 221637154}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &252196221
 GameObject:
   m_ObjectHideFlags: 0
@@ -1227,6 +1355,7 @@ GameObject:
   - component: {fileID: 252196222}
   - component: {fileID: 252196223}
   - component: {fileID: 252196224}
+  - component: {fileID: 252196225}
   m_Layer: 0
   m_Name: Board Piece (34)
   m_TagString: Board
@@ -1311,6 +1440,19 @@ MonoBehaviour:
   squareID: 43
   selected: 0
   safeZone: 0
+--- !u!65 &252196225
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 252196221}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &270573233
 GameObject:
   m_ObjectHideFlags: 0
@@ -1322,6 +1464,7 @@ GameObject:
   - component: {fileID: 270573234}
   - component: {fileID: 270573235}
   - component: {fileID: 270573236}
+  - component: {fileID: 270573237}
   m_Layer: 0
   m_Name: Board Piece (39)
   m_TagString: Board
@@ -1406,6 +1549,19 @@ MonoBehaviour:
   squareID: 38
   selected: 0
   safeZone: 0
+--- !u!65 &270573237
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 270573233}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &278266192
 GameObject:
   m_ObjectHideFlags: 0
@@ -1417,6 +1573,7 @@ GameObject:
   - component: {fileID: 278266193}
   - component: {fileID: 278266194}
   - component: {fileID: 278266195}
+  - component: {fileID: 278266196}
   m_Layer: 0
   m_Name: Board Piece (35)
   m_TagString: Board
@@ -1501,6 +1658,19 @@ MonoBehaviour:
   squareID: 42
   selected: 0
   safeZone: 0
+--- !u!65 &278266196
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 278266192}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &317354294
 GameObject:
   m_ObjectHideFlags: 0
@@ -1512,6 +1682,7 @@ GameObject:
   - component: {fileID: 317354295}
   - component: {fileID: 317354296}
   - component: {fileID: 317354297}
+  - component: {fileID: 317354298}
   m_Layer: 0
   m_Name: Board Piece (1)
   m_TagString: Board
@@ -1596,6 +1767,19 @@ MonoBehaviour:
   squareID: 15
   selected: 0
   safeZone: 0
+--- !u!65 &317354298
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 317354294}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &337913595
 GameObject:
   m_ObjectHideFlags: 0
@@ -1607,6 +1791,7 @@ GameObject:
   - component: {fileID: 337913597}
   - component: {fileID: 337913596}
   - component: {fileID: 337913598}
+  - component: {fileID: 337913599}
   m_Layer: 0
   m_Name: Board Piece (54)
   m_TagString: Board
@@ -1691,6 +1876,19 @@ MonoBehaviour:
   squareID: 23
   selected: 0
   safeZone: 0
+--- !u!65 &337913599
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 337913595}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &348799252
 GameObject:
   m_ObjectHideFlags: 0
@@ -1702,6 +1900,7 @@ GameObject:
   - component: {fileID: 348799254}
   - component: {fileID: 348799253}
   - component: {fileID: 348799255}
+  - component: {fileID: 348799256}
   m_Layer: 0
   m_Name: Board Piece (52)
   m_TagString: Board
@@ -1786,6 +1985,19 @@ MonoBehaviour:
   squareID: 21
   selected: 0
   safeZone: 0
+--- !u!65 &348799256
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 348799252}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &361985822
 GameObject:
   m_ObjectHideFlags: 0
@@ -1797,6 +2009,7 @@ GameObject:
   - component: {fileID: 361985823}
   - component: {fileID: 361985824}
   - component: {fileID: 361985825}
+  - component: {fileID: 361985826}
   m_Layer: 0
   m_Name: Board Piece (23)
   m_TagString: Board
@@ -1881,6 +2094,19 @@ MonoBehaviour:
   squareID: 55
   selected: 0
   safeZone: 0
+--- !u!65 &361985826
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 361985822}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &384486235
 GameObject:
   m_ObjectHideFlags: 0
@@ -1892,6 +2118,7 @@ GameObject:
   - component: {fileID: 384486236}
   - component: {fileID: 384486237}
   - component: {fileID: 384486238}
+  - component: {fileID: 384486239}
   m_Layer: 0
   m_Name: Board Piece (7)
   m_TagString: Board
@@ -1976,6 +2203,19 @@ MonoBehaviour:
   squareID: 11
   selected: 0
   safeZone: 0
+--- !u!65 &384486239
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 384486235}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &385403272
 GameObject:
   m_ObjectHideFlags: 0
@@ -1987,6 +2227,7 @@ GameObject:
   - component: {fileID: 385403275}
   - component: {fileID: 385403274}
   - component: {fileID: 385403273}
+  - component: {fileID: 385403276}
   m_Layer: 0
   m_Name: Board Piece (48)
   m_TagString: Board
@@ -2071,6 +2312,19 @@ Transform:
   m_Father: {fileID: 1350299668}
   m_RootOrder: 73
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!65 &385403276
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 385403272}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &388678149
 GameObject:
   m_ObjectHideFlags: 0
@@ -2082,6 +2336,7 @@ GameObject:
   - component: {fileID: 388678150}
   - component: {fileID: 388678152}
   - component: {fileID: 388678151}
+  - component: {fileID: 388678153}
   m_Layer: 0
   m_Name: Board Piece (61)
   m_TagString: Board
@@ -2166,6 +2421,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!65 &388678153
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 388678149}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &397279930
 GameObject:
   m_ObjectHideFlags: 0
@@ -2286,6 +2554,7 @@ GameObject:
   - component: {fileID: 402719483}
   - component: {fileID: 402719485}
   - component: {fileID: 402719484}
+  - component: {fileID: 402719486}
   m_Layer: 0
   m_Name: Board Piece (67)
   m_TagString: Board
@@ -2370,6 +2639,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!65 &402719486
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 402719482}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &409181247
 GameObject:
   m_ObjectHideFlags: 0
@@ -2381,6 +2663,7 @@ GameObject:
   - component: {fileID: 409181248}
   - component: {fileID: 409181249}
   - component: {fileID: 409181250}
+  - component: {fileID: 409181251}
   m_Layer: 0
   m_Name: Board Piece (37)
   m_TagString: Board
@@ -2465,6 +2748,19 @@ MonoBehaviour:
   squareID: 40
   selected: 0
   safeZone: 0
+--- !u!65 &409181251
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 409181247}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &421506500
 GameObject:
   m_ObjectHideFlags: 0
@@ -2476,6 +2772,7 @@ GameObject:
   - component: {fileID: 421506501}
   - component: {fileID: 421506502}
   - component: {fileID: 421506503}
+  - component: {fileID: 421506504}
   m_Layer: 0
   m_Name: Board Piece (22)
   m_TagString: Board
@@ -2560,6 +2857,19 @@ MonoBehaviour:
   squareID: 56
   selected: 0
   safeZone: 0
+--- !u!65 &421506504
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 421506500}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &441993931
 GameObject:
   m_ObjectHideFlags: 0
@@ -2571,6 +2881,7 @@ GameObject:
   - component: {fileID: 441993932}
   - component: {fileID: 441993933}
   - component: {fileID: 441993934}
+  - component: {fileID: 441993935}
   m_Layer: 0
   m_Name: Board Piece (31)
   m_TagString: Board
@@ -2655,6 +2966,19 @@ MonoBehaviour:
   squareID: 47
   selected: 0
   safeZone: 0
+--- !u!65 &441993935
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 441993931}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &453651290
 GameObject:
   m_ObjectHideFlags: 0
@@ -2666,6 +2990,7 @@ GameObject:
   - component: {fileID: 453651292}
   - component: {fileID: 453651291}
   - component: {fileID: 453651293}
+  - component: {fileID: 453651294}
   m_Layer: 0
   m_Name: Board Piece (44)
   m_TagString: Board
@@ -2750,6 +3075,19 @@ MonoBehaviour:
   squareID: 33
   selected: 0
   safeZone: 0
+--- !u!65 &453651294
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 453651290}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &462855624
 GameObject:
   m_ObjectHideFlags: 0
@@ -2761,6 +3099,7 @@ GameObject:
   - component: {fileID: 462855627}
   - component: {fileID: 462855626}
   - component: {fileID: 462855625}
+  - component: {fileID: 462855628}
   m_Layer: 0
   m_Name: Board Piece (31)
   m_TagString: Board
@@ -2845,6 +3184,19 @@ Transform:
   m_Father: {fileID: 1350299668}
   m_RootOrder: 74
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!65 &462855628
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 462855624}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &465446318
 GameObject:
   m_ObjectHideFlags: 0
@@ -2935,6 +3287,7 @@ GameObject:
   - component: {fileID: 481361656}
   - component: {fileID: 481361657}
   - component: {fileID: 481361658}
+  - component: {fileID: 481361659}
   m_Layer: 0
   m_Name: Board Piece (27)
   m_TagString: Board
@@ -3019,6 +3372,19 @@ MonoBehaviour:
   squareID: 51
   selected: 0
   safeZone: 0
+--- !u!65 &481361659
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 481361655}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &497630529
 GameObject:
   m_ObjectHideFlags: 0
@@ -3139,6 +3505,7 @@ GameObject:
   - component: {fileID: 497981155}
   - component: {fileID: 497981156}
   - component: {fileID: 497981157}
+  - component: {fileID: 497981158}
   m_Layer: 0
   m_Name: Board Piece (13)
   m_TagString: Board
@@ -3223,6 +3590,19 @@ MonoBehaviour:
   squareID: 6
   selected: 0
   safeZone: 0
+--- !u!65 &497981158
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 497981154}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &527758507
 GameObject:
   m_ObjectHideFlags: 0
@@ -3234,6 +3614,7 @@ GameObject:
   - component: {fileID: 527758510}
   - component: {fileID: 527758509}
   - component: {fileID: 527758508}
+  - component: {fileID: 527758511}
   m_Layer: 0
   m_Name: Board Piece (67)
   m_TagString: Board
@@ -3318,6 +3699,19 @@ Transform:
   m_Father: {fileID: 1350299668}
   m_RootOrder: 80
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!65 &527758511
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 527758507}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &531389689
 GameObject:
   m_ObjectHideFlags: 0
@@ -3329,6 +3723,7 @@ GameObject:
   - component: {fileID: 531389691}
   - component: {fileID: 531389690}
   - component: {fileID: 531389692}
+  - component: {fileID: 531389693}
   m_Layer: 0
   m_Name: Board Piece (57)
   m_TagString: Board
@@ -3413,6 +3808,19 @@ MonoBehaviour:
   squareID: 26
   selected: 0
   safeZone: 0
+--- !u!65 &531389693
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 531389689}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &534669902
 GameObject:
   m_ObjectHideFlags: 0
@@ -3451,9 +3859,10 @@ Camera:
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_GateFitMode: 2
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
@@ -3488,13 +3897,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534669902}
-  m_LocalRotation: {x: 0.23911765, y: 0.3696438, z: -0.09904577, w: 0.89239913}
-  m_LocalPosition: {x: -15.5, y: 13, z: -16.25}
+  m_LocalRotation: {x: -0.115075044, y: 0.88111967, z: -0.2778159, w: -0.3649715}
+  m_LocalPosition: {x: 12, y: 8.5, z: 12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 30, y: 45, z: 0}
+  m_LocalEulerAnglesHint: {x: 35, y: 225, z: 0}
 --- !u!1 &567447117
 GameObject:
   m_ObjectHideFlags: 0
@@ -3615,6 +4024,7 @@ GameObject:
   - component: {fileID: 573266411}
   - component: {fileID: 573266412}
   - component: {fileID: 573266413}
+  - component: {fileID: 573266414}
   m_Layer: 0
   m_Name: Board Piece (38)
   m_TagString: Board
@@ -3699,6 +4109,19 @@ MonoBehaviour:
   squareID: 39
   selected: 0
   safeZone: 0
+--- !u!65 &573266414
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 573266410}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &573838406
 GameObject:
   m_ObjectHideFlags: 0
@@ -3710,6 +4133,7 @@ GameObject:
   - component: {fileID: 573838408}
   - component: {fileID: 573838407}
   - component: {fileID: 573838409}
+  - component: {fileID: 573838410}
   m_Layer: 0
   m_Name: Board Piece (48)
   m_TagString: Board
@@ -3794,6 +4218,19 @@ MonoBehaviour:
   squareID: 17
   selected: 0
   safeZone: 103
+--- !u!65 &573838410
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 573838406}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &595574102
 GameObject:
   m_ObjectHideFlags: 0
@@ -3805,6 +4242,7 @@ GameObject:
   - component: {fileID: 595574103}
   - component: {fileID: 595574104}
   - component: {fileID: 595574105}
+  - component: {fileID: 595574106}
   m_Layer: 0
   m_Name: Board Piece (9)
   m_TagString: Board
@@ -3889,6 +4327,19 @@ MonoBehaviour:
   squareID: 9
   selected: 0
   safeZone: 0
+--- !u!65 &595574106
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 595574102}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &600723842
 GameObject:
   m_ObjectHideFlags: 0
@@ -4009,6 +4460,7 @@ GameObject:
   - component: {fileID: 618392104}
   - component: {fileID: 618392105}
   - component: {fileID: 618392106}
+  - component: {fileID: 618392107}
   m_Layer: 0
   m_Name: Board Piece (18)
   m_TagString: Board
@@ -4093,6 +4545,19 @@ MonoBehaviour:
   squareID: 1
   selected: 0
   safeZone: 0
+--- !u!65 &618392107
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 618392103}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &662080796
 GameObject:
   m_ObjectHideFlags: 0
@@ -4104,6 +4569,7 @@ GameObject:
   - component: {fileID: 662080799}
   - component: {fileID: 662080798}
   - component: {fileID: 662080797}
+  - component: {fileID: 662080800}
   m_Layer: 0
   m_Name: Home (4)
   m_TagString: Untagged
@@ -4188,6 +4654,19 @@ Transform:
   m_Father: {fileID: 1350299668}
   m_RootOrder: 79
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!65 &662080800
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 662080796}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.5, y: 1.5000005, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &672601107
 GameObject:
   m_ObjectHideFlags: 0
@@ -4199,6 +4678,7 @@ GameObject:
   - component: {fileID: 672601109}
   - component: {fileID: 672601108}
   - component: {fileID: 672601110}
+  - component: {fileID: 672601111}
   m_Layer: 0
   m_Name: Board Piece (58)
   m_TagString: Board
@@ -4283,6 +4763,19 @@ MonoBehaviour:
   squareID: 27
   selected: 0
   safeZone: 0
+--- !u!65 &672601111
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 672601107}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &686187464
 GameObject:
   m_ObjectHideFlags: 0
@@ -4294,6 +4787,7 @@ GameObject:
   - component: {fileID: 686187467}
   - component: {fileID: 686187466}
   - component: {fileID: 686187465}
+  - component: {fileID: 686187468}
   m_Layer: 0
   m_Name: Home (7)
   m_TagString: Untagged
@@ -4378,6 +4872,19 @@ Transform:
   m_Father: {fileID: 1350299668}
   m_RootOrder: 84
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!65 &686187468
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 686187464}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.5, y: 1.5000005, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &712486014
 GameObject:
   m_ObjectHideFlags: 0
@@ -4389,6 +4896,7 @@ GameObject:
   - component: {fileID: 712486016}
   - component: {fileID: 712486015}
   - component: {fileID: 712486017}
+  - component: {fileID: 712486018}
   m_Layer: 0
   m_Name: Board Piece (45)
   m_TagString: Board
@@ -4473,6 +4981,19 @@ MonoBehaviour:
   squareID: 32
   selected: 0
   safeZone: 114
+--- !u!65 &712486018
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 712486014}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &758279860
 GameObject:
   m_ObjectHideFlags: 0
@@ -4484,6 +5005,7 @@ GameObject:
   - component: {fileID: 758279861}
   - component: {fileID: 758279863}
   - component: {fileID: 758279862}
+  - component: {fileID: 758279864}
   m_Layer: 0
   m_Name: Board Piece (65)
   m_TagString: Board
@@ -4568,6 +5090,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!65 &758279864
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 758279860}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &811848939
 GameObject:
   m_ObjectHideFlags: 0
@@ -4579,6 +5114,7 @@ GameObject:
   - component: {fileID: 811848940}
   - component: {fileID: 811848942}
   - component: {fileID: 811848941}
+  - component: {fileID: 811848943}
   m_Layer: 0
   m_Name: Board Piece (69)
   m_TagString: Board
@@ -4663,6 +5199,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!65 &811848943
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 811848939}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &829002379
 GameObject:
   m_ObjectHideFlags: 0
@@ -4674,6 +5223,7 @@ GameObject:
   - component: {fileID: 829002380}
   - component: {fileID: 829002381}
   - component: {fileID: 829002382}
+  - component: {fileID: 829002383}
   m_Layer: 0
   m_Name: Board Piece (16)
   m_TagString: Board
@@ -4758,6 +5308,19 @@ MonoBehaviour:
   squareID: 3
   selected: 0
   safeZone: 0
+--- !u!65 &829002383
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 829002379}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &836133336
 GameObject:
   m_ObjectHideFlags: 0
@@ -5175,6 +5738,7 @@ GameObject:
   - component: {fileID: 891416800}
   - component: {fileID: 891416801}
   - component: {fileID: 891416802}
+  - component: {fileID: 891416803}
   m_Layer: 0
   m_Name: Board Piece (5)
   m_TagString: Board
@@ -5259,6 +5823,19 @@ MonoBehaviour:
   squareID: 13
   selected: 0
   safeZone: 0
+--- !u!65 &891416803
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 891416799}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &905922745
 GameObject:
   m_ObjectHideFlags: 0
@@ -5270,6 +5847,7 @@ GameObject:
   - component: {fileID: 905922746}
   - component: {fileID: 905922747}
   - component: {fileID: 905922748}
+  - component: {fileID: 905922749}
   m_Layer: 0
   m_Name: Board Piece (17)
   m_TagString: Board
@@ -5354,6 +5932,19 @@ MonoBehaviour:
   squareID: 2
   selected: 0
   safeZone: 121
+--- !u!65 &905922749
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 905922745}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &936881762
 GameObject:
   m_ObjectHideFlags: 0
@@ -5365,6 +5956,7 @@ GameObject:
   - component: {fileID: 936881763}
   - component: {fileID: 936881764}
   - component: {fileID: 936881765}
+  - component: {fileID: 936881766}
   m_Layer: 0
   m_Name: Board Piece (4)
   m_TagString: Board
@@ -5449,6 +6041,19 @@ MonoBehaviour:
   squareID: 14
   selected: 0
   safeZone: 0
+--- !u!65 &936881766
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 936881762}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &937578671
 GameObject:
   m_ObjectHideFlags: 0
@@ -5460,6 +6065,7 @@ GameObject:
   - component: {fileID: 937578672}
   - component: {fileID: 937578673}
   - component: {fileID: 937578674}
+  - component: {fileID: 937578675}
   m_Layer: 0
   m_Name: Board Piece (6)
   m_TagString: Board
@@ -5544,6 +6150,19 @@ MonoBehaviour:
   squareID: 12
   selected: 0
   safeZone: 0
+--- !u!65 &937578675
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 937578671}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &953596979
 GameObject:
   m_ObjectHideFlags: 0
@@ -5555,6 +6174,7 @@ GameObject:
   - component: {fileID: 953596981}
   - component: {fileID: 953596980}
   - component: {fileID: 953596982}
+  - component: {fileID: 953596983}
   m_Layer: 0
   m_Name: Board Piece (59)
   m_TagString: Board
@@ -5639,6 +6259,19 @@ MonoBehaviour:
   squareID: 28
   selected: 0
   safeZone: 0
+--- !u!65 &953596983
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 953596979}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &968406258
 GameObject:
   m_ObjectHideFlags: 0
@@ -5650,6 +6283,7 @@ GameObject:
   - component: {fileID: 968406259}
   - component: {fileID: 968406260}
   - component: {fileID: 968406261}
+  - component: {fileID: 968406262}
   m_Layer: 0
   m_Name: Board Piece (11)
   m_TagString: Board
@@ -5734,6 +6368,19 @@ MonoBehaviour:
   squareID: 8
   selected: 0
   safeZone: 0
+--- !u!65 &968406262
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 968406258}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1016834941
 GameObject:
   m_ObjectHideFlags: 0
@@ -5745,6 +6392,7 @@ GameObject:
   - component: {fileID: 1016834942}
   - component: {fileID: 1016834943}
   - component: {fileID: 1016834944}
+  - component: {fileID: 1016834945}
   m_Layer: 0
   m_Name: Board Piece (33)
   m_TagString: Board
@@ -5829,6 +6477,19 @@ MonoBehaviour:
   squareID: 44
   selected: 0
   safeZone: 0
+--- !u!65 &1016834945
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1016834941}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1023847137
 GameObject:
   m_ObjectHideFlags: 0
@@ -5840,6 +6501,7 @@ GameObject:
   - component: {fileID: 1023847139}
   - component: {fileID: 1023847138}
   - component: {fileID: 1023847140}
+  - component: {fileID: 1023847141}
   m_Layer: 0
   m_Name: Board Piece (55)
   m_TagString: Board
@@ -5924,6 +6586,19 @@ MonoBehaviour:
   squareID: 24
   selected: 0
   safeZone: 0
+--- !u!65 &1023847141
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1023847137}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1044092331
 GameObject:
   m_ObjectHideFlags: 0
@@ -5935,6 +6610,7 @@ GameObject:
   - component: {fileID: 1044092334}
   - component: {fileID: 1044092333}
   - component: {fileID: 1044092332}
+  - component: {fileID: 1044092335}
   m_Layer: 0
   m_Name: Home (6)
   m_TagString: Untagged
@@ -6019,6 +6695,19 @@ Transform:
   m_Father: {fileID: 1350299668}
   m_RootOrder: 83
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!65 &1044092335
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1044092331}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.5, y: 1.5000005, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1072798572
 GameObject:
   m_ObjectHideFlags: 0
@@ -6030,6 +6719,7 @@ GameObject:
   - component: {fileID: 1072798573}
   - component: {fileID: 1072798574}
   - component: {fileID: 1072798575}
+  - component: {fileID: 1072798576}
   m_Layer: 0
   m_Name: Board Piece (30)
   m_TagString: Board
@@ -6114,6 +6804,19 @@ MonoBehaviour:
   squareID: 48
   selected: 0
   safeZone: 0
+--- !u!65 &1072798576
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1072798572}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1085449716
 GameObject:
   m_ObjectHideFlags: 0
@@ -6125,6 +6828,7 @@ GameObject:
   - component: {fileID: 1085449717}
   - component: {fileID: 1085449718}
   - component: {fileID: 1085449719}
+  - component: {fileID: 1085449720}
   m_Layer: 0
   m_Name: Board Piece (21)
   m_TagString: Board
@@ -6209,6 +6913,19 @@ MonoBehaviour:
   squareID: 57
   selected: 0
   safeZone: 0
+--- !u!65 &1085449720
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1085449716}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1167510979
 GameObject:
   m_ObjectHideFlags: 0
@@ -6220,6 +6937,7 @@ GameObject:
   - component: {fileID: 1167510980}
   - component: {fileID: 1167510981}
   - component: {fileID: 1167510982}
+  - component: {fileID: 1167510983}
   m_Layer: 0
   m_Name: Board Piece (2)
   m_TagString: Board
@@ -6304,6 +7022,19 @@ MonoBehaviour:
   squareID: 30
   selected: 0
   safeZone: 0
+--- !u!65 &1167510983
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1167510979}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1172272042
 GameObject:
   m_ObjectHideFlags: 0
@@ -6315,6 +7046,7 @@ GameObject:
   - component: {fileID: 1172272044}
   - component: {fileID: 1172272043}
   - component: {fileID: 1172272045}
+  - component: {fileID: 1172272046}
   m_Layer: 0
   m_Name: Board Piece (49)
   m_TagString: Board
@@ -6399,6 +7131,19 @@ MonoBehaviour:
   squareID: 18
   selected: 0
   safeZone: 0
+--- !u!65 &1172272046
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1172272042}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1244399476
 GameObject:
   m_ObjectHideFlags: 0
@@ -6410,6 +7155,7 @@ GameObject:
   - component: {fileID: 1244399479}
   - component: {fileID: 1244399478}
   - component: {fileID: 1244399477}
+  - component: {fileID: 1244399480}
   m_Layer: 0
   m_Name: Home (5)
   m_TagString: Untagged
@@ -6494,6 +7240,19 @@ Transform:
   m_Father: {fileID: 1350299668}
   m_RootOrder: 82
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!65 &1244399480
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1244399476}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.5, y: 1.5000005, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1281592100
 GameObject:
   m_ObjectHideFlags: 0
@@ -6505,6 +7264,7 @@ GameObject:
   - component: {fileID: 1281592101}
   - component: {fileID: 1281592102}
   - component: {fileID: 1281592103}
+  - component: {fileID: 1281592104}
   m_Layer: 0
   m_Name: Board Piece (20)
   m_TagString: Board
@@ -6589,6 +7349,19 @@ MonoBehaviour:
   squareID: 58
   selected: 0
   safeZone: 0
+--- !u!65 &1281592104
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1281592100}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1314561698
 GameObject:
   m_ObjectHideFlags: 0
@@ -6709,6 +7482,7 @@ GameObject:
   - component: {fileID: 1338593462}
   - component: {fileID: 1338593464}
   - component: {fileID: 1338593463}
+  - component: {fileID: 1338593465}
   m_Layer: 0
   m_Name: Board Piece (63)
   m_TagString: Board
@@ -6793,6 +7567,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!65 &1338593465
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1338593461}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1350299667
 GameObject:
   m_ObjectHideFlags: 0
@@ -6919,6 +7706,7 @@ GameObject:
   - component: {fileID: 1350921625}
   - component: {fileID: 1350921624}
   - component: {fileID: 1350921626}
+  - component: {fileID: 1350921627}
   m_Layer: 0
   m_Name: Board Piece (46)
   m_TagString: Board
@@ -7003,6 +7791,19 @@ MonoBehaviour:
   squareID: 31
   selected: 0
   safeZone: 0
+--- !u!65 &1350921627
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1350921623}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1364548912
 GameObject:
   m_ObjectHideFlags: 0
@@ -7014,6 +7815,7 @@ GameObject:
   - component: {fileID: 1364548915}
   - component: {fileID: 1364548914}
   - component: {fileID: 1364548913}
+  - component: {fileID: 1364548916}
   m_Layer: 0
   m_Name: Board Piece (32)
   m_TagString: Board
@@ -7098,6 +7900,19 @@ Transform:
   m_Father: {fileID: 1350299668}
   m_RootOrder: 75
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!65 &1364548916
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1364548912}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1374999382
 GameObject:
   m_ObjectHideFlags: 0
@@ -7109,6 +7924,7 @@ GameObject:
   - component: {fileID: 1374999384}
   - component: {fileID: 1374999383}
   - component: {fileID: 1374999385}
+  - component: {fileID: 1374999386}
   m_Layer: 0
   m_Name: Board Piece (50)
   m_TagString: Board
@@ -7193,6 +8009,19 @@ MonoBehaviour:
   squareID: 19
   selected: 0
   safeZone: 0
+--- !u!65 &1374999386
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1374999382}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1382009478
 GameObject:
   m_ObjectHideFlags: 0
@@ -7204,6 +8033,7 @@ GameObject:
   - component: {fileID: 1382009479}
   - component: {fileID: 1382009480}
   - component: {fileID: 1382009481}
+  - component: {fileID: 1382009482}
   m_Layer: 0
   m_Name: Board Piece (29)
   m_TagString: Board
@@ -7288,6 +8118,19 @@ MonoBehaviour:
   squareID: 49
   selected: 0
   safeZone: 0
+--- !u!65 &1382009482
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1382009478}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1402576346
 GameObject:
   m_ObjectHideFlags: 0
@@ -7299,6 +8142,7 @@ GameObject:
   - component: {fileID: 1402576348}
   - component: {fileID: 1402576347}
   - component: {fileID: 1402576349}
+  - component: {fileID: 1402576350}
   m_Layer: 0
   m_Name: Board Piece (51)
   m_TagString: Board
@@ -7383,6 +8227,19 @@ MonoBehaviour:
   squareID: 20
   selected: 0
   safeZone: 0
+--- !u!65 &1402576350
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402576346}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1496684448
 GameObject:
   m_ObjectHideFlags: 0
@@ -7394,6 +8251,7 @@ GameObject:
   - component: {fileID: 1496684451}
   - component: {fileID: 1496684450}
   - component: {fileID: 1496684449}
+  - component: {fileID: 1496684452}
   m_Layer: 0
   m_Name: Board Piece (45)
   m_TagString: Board
@@ -7478,6 +8336,19 @@ Transform:
   m_Father: {fileID: 1350299668}
   m_RootOrder: 70
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!65 &1496684452
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1496684448}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1524020765
 GameObject:
   m_ObjectHideFlags: 0
@@ -7489,6 +8360,7 @@ GameObject:
   - component: {fileID: 1524020766}
   - component: {fileID: 1524020767}
   - component: {fileID: 1524020768}
+  - component: {fileID: 1524020769}
   m_Layer: 0
   m_Name: Board Piece (32)
   m_TagString: Board
@@ -7573,6 +8445,19 @@ MonoBehaviour:
   squareID: 46
   selected: 0
   safeZone: 0
+--- !u!65 &1524020769
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1524020765}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1532697085
 GameObject:
   m_ObjectHideFlags: 0
@@ -7584,6 +8469,7 @@ GameObject:
   - component: {fileID: 1532697086}
   - component: {fileID: 1532697088}
   - component: {fileID: 1532697087}
+  - component: {fileID: 1532697089}
   m_Layer: 0
   m_Name: Board Piece (64)
   m_TagString: Board
@@ -7668,6 +8554,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!65 &1532697089
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1532697085}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1553634299
 GameObject:
   m_ObjectHideFlags: 0
@@ -7758,6 +8657,7 @@ GameObject:
   - component: {fileID: 1562735111}
   - component: {fileID: 1562735110}
   - component: {fileID: 1562735112}
+  - component: {fileID: 1562735113}
   m_Layer: 0
   m_Name: Board Piece
   m_TagString: Board
@@ -7842,6 +8742,19 @@ MonoBehaviour:
   squareID: 0
   selected: 0
   safeZone: 0
+--- !u!65 &1562735113
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1562735109}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1608694892
 GameObject:
   m_ObjectHideFlags: 0
@@ -7853,6 +8766,7 @@ GameObject:
   - component: {fileID: 1608694894}
   - component: {fileID: 1608694893}
   - component: {fileID: 1608694895}
+  - component: {fileID: 1608694896}
   m_Layer: 0
   m_Name: Board Piece (53)
   m_TagString: Board
@@ -7937,6 +8851,19 @@ MonoBehaviour:
   squareID: 22
   selected: 0
   safeZone: 0
+--- !u!65 &1608694896
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1608694892}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1614768740
 GameObject:
   m_ObjectHideFlags: 0
@@ -7948,6 +8875,7 @@ GameObject:
   - component: {fileID: 1614768741}
   - component: {fileID: 1614768743}
   - component: {fileID: 1614768742}
+  - component: {fileID: 1614768744}
   m_Layer: 0
   m_Name: Board Piece (68)
   m_TagString: Board
@@ -8032,6 +8960,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!65 &1614768744
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1614768740}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1626060550
 GameObject:
   m_ObjectHideFlags: 0
@@ -8043,6 +8984,7 @@ GameObject:
   - component: {fileID: 1626060552}
   - component: {fileID: 1626060551}
   - component: {fileID: 1626060553}
+  - component: {fileID: 1626060554}
   m_Layer: 0
   m_Name: Board Piece (56)
   m_TagString: Board
@@ -8127,6 +9069,19 @@ MonoBehaviour:
   squareID: 25
   selected: 0
   safeZone: 0
+--- !u!65 &1626060554
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1626060550}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1629464114
 GameObject:
   m_ObjectHideFlags: 0
@@ -8138,6 +9093,7 @@ GameObject:
   - component: {fileID: 1629464115}
   - component: {fileID: 1629464116}
   - component: {fileID: 1629464117}
+  - component: {fileID: 1629464118}
   m_Layer: 0
   m_Name: Board Piece (26)
   m_TagString: Board
@@ -8222,6 +9178,19 @@ MonoBehaviour:
   squareID: 52
   selected: 0
   safeZone: 0
+--- !u!65 &1629464118
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1629464114}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1634645086
 GameObject:
   m_ObjectHideFlags: 0
@@ -8233,6 +9202,7 @@ GameObject:
   - component: {fileID: 1634645087}
   - component: {fileID: 1634645088}
   - component: {fileID: 1634645089}
+  - component: {fileID: 1634645090}
   m_Layer: 0
   m_Name: Board Piece (12)
   m_TagString: Board
@@ -8317,6 +9287,19 @@ MonoBehaviour:
   squareID: 7
   selected: 0
   safeZone: 0
+--- !u!65 &1634645090
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1634645086}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1645107219
 GameObject:
   m_ObjectHideFlags: 0
@@ -8328,6 +9311,7 @@ GameObject:
   - component: {fileID: 1645107221}
   - component: {fileID: 1645107220}
   - component: {fileID: 1645107222}
+  - component: {fileID: 1645107223}
   m_Layer: 0
   m_Name: Board Piece (41)
   m_TagString: Board
@@ -8412,6 +9396,19 @@ MonoBehaviour:
   squareID: 36
   selected: 0
   safeZone: 0
+--- !u!65 &1645107223
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1645107219}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1704687825
 GameObject:
   m_ObjectHideFlags: 0
@@ -8423,6 +9420,7 @@ GameObject:
   - component: {fileID: 1704687826}
   - component: {fileID: 1704687828}
   - component: {fileID: 1704687827}
+  - component: {fileID: 1704687829}
   m_Layer: 0
   m_Name: Board Piece (62)
   m_TagString: Board
@@ -8507,6 +9505,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!65 &1704687829
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1704687825}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1718007175
 GameObject:
   m_ObjectHideFlags: 0
@@ -8518,6 +9529,7 @@ GameObject:
   - component: {fileID: 1718007178}
   - component: {fileID: 1718007177}
   - component: {fileID: 1718007176}
+  - component: {fileID: 1718007179}
   m_Layer: 0
   m_Name: Board Piece (34)
   m_TagString: Board
@@ -8602,6 +9614,19 @@ Transform:
   m_Father: {fileID: 1350299668}
   m_RootOrder: 77
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!65 &1718007179
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1718007175}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1729828745
 GameObject:
   m_ObjectHideFlags: 0
@@ -8613,6 +9638,7 @@ GameObject:
   - component: {fileID: 1729828748}
   - component: {fileID: 1729828747}
   - component: {fileID: 1729828746}
+  - component: {fileID: 1729828749}
   m_Layer: 0
   m_Name: Board Piece (68)
   m_TagString: Board
@@ -8697,6 +9723,19 @@ Transform:
   m_Father: {fileID: 1350299668}
   m_RootOrder: 81
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!65 &1729828749
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1729828745}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1782832069
 GameObject:
   m_ObjectHideFlags: 0
@@ -8817,6 +9856,7 @@ GameObject:
   - component: {fileID: 1798035555}
   - component: {fileID: 1798035557}
   - component: {fileID: 1798035556}
+  - component: {fileID: 1798035558}
   m_Layer: 0
   m_Name: Board Piece (66)
   m_TagString: Board
@@ -8901,6 +9941,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!65 &1798035558
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1798035554}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1859125842
 GameObject:
   m_ObjectHideFlags: 0
@@ -8912,6 +9965,7 @@ GameObject:
   - component: {fileID: 1859125843}
   - component: {fileID: 1859125844}
   - component: {fileID: 1859125845}
+  - component: {fileID: 1859125846}
   m_Layer: 0
   m_Name: Board Piece (24)
   m_TagString: Board
@@ -8996,6 +10050,19 @@ MonoBehaviour:
   squareID: 54
   selected: 0
   safeZone: 0
+--- !u!65 &1859125846
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1859125842}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1867474910
 GameObject:
   m_ObjectHideFlags: 0
@@ -9007,6 +10074,7 @@ GameObject:
   - component: {fileID: 1867474911}
   - component: {fileID: 1867474912}
   - component: {fileID: 1867474913}
+  - component: {fileID: 1867474914}
   m_Layer: 0
   m_Name: Board Piece (19)
   m_TagString: Board
@@ -9091,6 +10159,19 @@ MonoBehaviour:
   squareID: 59
   selected: 0
   safeZone: 0
+--- !u!65 &1867474914
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1867474910}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1876161119
 GameObject:
   m_ObjectHideFlags: 0
@@ -9102,6 +10183,7 @@ GameObject:
   - component: {fileID: 1876161121}
   - component: {fileID: 1876161120}
   - component: {fileID: 1876161122}
+  - component: {fileID: 1876161123}
   m_Layer: 0
   m_Name: Board Piece (42)
   m_TagString: Board
@@ -9186,6 +10268,19 @@ MonoBehaviour:
   squareID: 35
   selected: 0
   safeZone: 0
+--- !u!65 &1876161123
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1876161119}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1913662657
 GameObject:
   m_ObjectHideFlags: 0
@@ -9197,6 +10292,7 @@ GameObject:
   - component: {fileID: 1913662658}
   - component: {fileID: 1913662659}
   - component: {fileID: 1913662660}
+  - component: {fileID: 1913662661}
   m_Layer: 0
   m_Name: Board Piece (25)
   m_TagString: Board
@@ -9281,6 +10377,19 @@ MonoBehaviour:
   squareID: 53
   selected: 0
   safeZone: 0
+--- !u!65 &1913662661
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1913662657}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1921848277
 GameObject:
   m_ObjectHideFlags: 0
@@ -9292,6 +10401,7 @@ GameObject:
   - component: {fileID: 1921848278}
   - component: {fileID: 1921848279}
   - component: {fileID: 1921848280}
+  - component: {fileID: 1921848281}
   m_Layer: 0
   m_Name: Board Piece (3)
   m_TagString: Board
@@ -9376,6 +10486,19 @@ MonoBehaviour:
   squareID: 45
   selected: 0
   safeZone: 0
+--- !u!65 &1921848281
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1921848277}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1936565775
 GameObject:
   m_ObjectHideFlags: 0
@@ -9387,6 +10510,7 @@ GameObject:
   - component: {fileID: 1936565776}
   - component: {fileID: 1936565777}
   - component: {fileID: 1936565778}
+  - component: {fileID: 1936565779}
   m_Layer: 0
   m_Name: Board Piece (8)
   m_TagString: Board
@@ -9471,6 +10595,19 @@ MonoBehaviour:
   squareID: 10
   selected: 0
   safeZone: 0
+--- !u!65 &1936565779
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1936565775}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1952583996
 GameObject:
   m_ObjectHideFlags: 0
@@ -9482,6 +10619,7 @@ GameObject:
   - component: {fileID: 1952583997}
   - component: {fileID: 1952583998}
   - component: {fileID: 1952583999}
+  - component: {fileID: 1952584000}
   m_Layer: 0
   m_Name: Board Piece (28)
   m_TagString: Board
@@ -9566,6 +10704,19 @@ MonoBehaviour:
   squareID: 50
   selected: 0
   safeZone: 0
+--- !u!65 &1952584000
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1952583996}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1987780193
 GameObject:
   m_ObjectHideFlags: 0
@@ -9577,6 +10728,7 @@ GameObject:
   - component: {fileID: 1987780196}
   - component: {fileID: 1987780195}
   - component: {fileID: 1987780194}
+  - component: {fileID: 1987780197}
   m_Layer: 0
   m_Name: Board Piece (33)
   m_TagString: Board
@@ -9661,6 +10813,19 @@ Transform:
   m_Father: {fileID: 1350299668}
   m_RootOrder: 76
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!65 &1987780197
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1987780193}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2066301970
 GameObject:
   m_ObjectHideFlags: 0
@@ -9672,6 +10837,7 @@ GameObject:
   - component: {fileID: 2066301971}
   - component: {fileID: 2066301972}
   - component: {fileID: 2066301973}
+  - component: {fileID: 2066301974}
   m_Layer: 0
   m_Name: Board Piece (14)
   m_TagString: Board
@@ -9756,6 +10922,19 @@ MonoBehaviour:
   squareID: 5
   selected: 0
   safeZone: 0
+--- !u!65 &2066301974
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2066301970}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2080897455
 GameObject:
   m_ObjectHideFlags: 0
@@ -9876,6 +11055,7 @@ GameObject:
   - component: {fileID: 2089604920}
   - component: {fileID: 2089604919}
   - component: {fileID: 2089604921}
+  - component: {fileID: 2089604922}
   m_Layer: 0
   m_Name: Board Piece (47)
   m_TagString: Board
@@ -9960,6 +11140,19 @@ MonoBehaviour:
   squareID: 16
   selected: 0
   safeZone: 0
+--- !u!65 &2089604922
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2089604918}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2113099917
 GameObject:
   m_ObjectHideFlags: 0
@@ -9971,6 +11164,7 @@ GameObject:
   - component: {fileID: 2113099919}
   - component: {fileID: 2113099918}
   - component: {fileID: 2113099920}
+  - component: {fileID: 2113099921}
   m_Layer: 0
   m_Name: Board Piece (40)
   m_TagString: Board
@@ -10055,6 +11249,19 @@ MonoBehaviour:
   squareID: 37
   selected: 0
   safeZone: 0
+--- !u!65 &2113099921
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2113099917}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2115347919
 GameObject:
   m_ObjectHideFlags: 0
@@ -10175,6 +11382,7 @@ GameObject:
   - component: {fileID: 2122782473}
   - component: {fileID: 2122782472}
   - component: {fileID: 2122782471}
+  - component: {fileID: 2122782474}
   m_Layer: 0
   m_Name: Board Piece (46)
   m_TagString: Board
@@ -10259,3 +11467,16 @@ Transform:
   m_Father: {fileID: 1350299668}
   m_RootOrder: 71
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!65 &2122782474
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2122782470}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5000001, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
