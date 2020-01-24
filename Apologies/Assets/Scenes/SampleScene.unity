@@ -228,8 +228,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentID: 0
-  selected: {r: 1, g: 1, b: 0, a: 1}
-  unSelected: {r: 1, g: 1, b: 1, a: 1}
   pawnNumber: 1
   color: 103
 --- !u!1 &44887435
@@ -278,7 +276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 78
-  selected: 0
+  selectionStatus: 32
   safeZone: 98
 --- !u!212 &44887438
 SpriteRenderer:
@@ -375,7 +373,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 47
-  selected: 0
+  selectionStatus: 32
   safeZone: 0
 --- !u!212 &54392502
 SpriteRenderer:
@@ -631,7 +629,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 34
-  selected: 0
+  selectionStatus: 32
   safeZone: 0
 --- !u!65 &86593198
 BoxCollider:
@@ -722,7 +720,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 134995270}
   m_LocalRotation: {x: 0.706594, y: -0.0013005569, z: -0.00022163344, w: 0.707618}
-  m_LocalPosition: {x: -0.28, y: -7.05, z: -0.6}
+  m_LocalPosition: {x: -0.28, y: -5.69, z: -0.6}
   m_LocalScale: {x: 0.99912775, y: 0.9968086, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -830,6 +828,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  selected: {r: 0, g: 1, b: 0, a: 1}
+  highlighted: {r: 1, g: 1, b: 0, a: 1}
+  unSelected: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &162849292
 GameObject:
   m_ObjectHideFlags: 0
@@ -926,7 +927,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 29
-  selected: 0
+  selectionStatus: 32
   safeZone: 0
 --- !u!65 &162849296
 BoxCollider:
@@ -1129,7 +1130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 41
-  selected: 0
+  selectionStatus: 32
   safeZone: 0
 --- !u!65 &173836404
 BoxCollider:
@@ -1240,7 +1241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 4
-  selected: 0
+  selectionStatus: 32
   safeZone: 0
 --- !u!65 &178538584
 BoxCollider:
@@ -1287,7 +1288,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 75
-  selected: 0
+  selectionStatus: 32
   safeZone: 114
 --- !u!212 &221637156
 SpriteRenderer:
@@ -1462,7 +1463,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 43
-  selected: 0
+  selectionStatus: 32
   safeZone: 0
 --- !u!65 &252196225
 BoxCollider:
@@ -1573,7 +1574,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 38
-  selected: 0
+  selectionStatus: 32
   safeZone: 0
 --- !u!65 &270573237
 BoxCollider:
@@ -1684,7 +1685,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 42
-  selected: 0
+  selectionStatus: 32
   safeZone: 0
 --- !u!65 &278266196
 BoxCollider:
@@ -1795,7 +1796,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 15
-  selected: 0
+  selectionStatus: 32
   safeZone: 0
 --- !u!65 &317354298
 BoxCollider:
@@ -1906,7 +1907,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 23
-  selected: 0
+  selectionStatus: 32
   safeZone: 0
 --- !u!65 &337913599
 BoxCollider:
@@ -2017,7 +2018,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 21
-  selected: 0
+  selectionStatus: 32
   safeZone: 0
 --- !u!65 &348799256
 BoxCollider:
@@ -2128,7 +2129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 55
-  selected: 0
+  selectionStatus: 32
   safeZone: 0
 --- !u!65 &361985826
 BoxCollider:
@@ -2239,7 +2240,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 11
-  selected: 0
+  selectionStatus: 32
   safeZone: 0
 --- !u!65 &384486239
 BoxCollider:
@@ -2286,7 +2287,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 76
-  selected: 0
+  selectionStatus: 32
   safeZone: 114
 --- !u!212 &385403274
 SpriteRenderer:
@@ -2411,7 +2412,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 60
-  selected: 0
+  selectionStatus: 32
   safeZone: 121
 --- !u!212 &388678152
 SpriteRenderer:
@@ -2583,8 +2584,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentID: 0
-  selected: {r: 1, g: 1, b: 0, a: 1}
-  unSelected: {r: 1, g: 1, b: 1, a: 1}
   pawnNumber: 0
   color: 121
 --- !u!1 &402719482
@@ -2633,7 +2632,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 67
-  selected: 0
+  selectionStatus: 32
   safeZone: 103
 --- !u!212 &402719485
 SpriteRenderer:
@@ -2794,7 +2793,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 40
-  selected: 0
+  selectionStatus: 32
   safeZone: 0
 --- !u!65 &409181251
 BoxCollider:
@@ -2905,7 +2904,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 56
-  selected: 0
+  selectionStatus: 32
   safeZone: 0
 --- !u!65 &421506504
 BoxCollider:
@@ -3016,7 +3015,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 47
-  selected: 0
+  selectionStatus: 32
   safeZone: 0
 --- !u!65 &441993935
 BoxCollider:
@@ -3127,7 +3126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 33
-  selected: 0
+  selectionStatus: 32
   safeZone: 0
 --- !u!65 &453651294
 BoxCollider:
@@ -3174,7 +3173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 79
-  selected: 0
+  selectionStatus: 32
   safeZone: 98
 --- !u!212 &462855626
 SpriteRenderer:
@@ -3430,7 +3429,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 51
-  selected: 0
+  selectionStatus: 32
   safeZone: 0
 --- !u!65 &481361659
 BoxCollider:
@@ -3552,8 +3551,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentID: 0
-  selected: {r: 1, g: 1, b: 0, a: 1}
-  unSelected: {r: 1, g: 1, b: 1, a: 1}
   pawnNumber: 3
   color: 98
 --- !u!1 &497981154
@@ -3652,7 +3649,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 6
-  selected: 0
+  selectionStatus: 32
   safeZone: 0
 --- !u!65 &497981158
 BoxCollider:
@@ -3699,7 +3696,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 69
-  selected: 0
+  selectionStatus: 32
   safeZone: 103
 --- !u!212 &527758509
 SpriteRenderer:
@@ -3874,7 +3871,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 26
-  selected: 0
+  selectionStatus: 32
   safeZone: 0
 --- !u!65 &531389693
 BoxCollider:
@@ -4079,8 +4076,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentID: 0
-  selected: {r: 1, g: 1, b: 0, a: 1}
-  unSelected: {r: 1, g: 1, b: 1, a: 1}
   pawnNumber: 0
   color: 121
 --- !u!1 &573266410
@@ -4179,7 +4174,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 39
-  selected: 0
+  selectionStatus: 32
   safeZone: 0
 --- !u!65 &573266414
 BoxCollider:
@@ -4290,7 +4285,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 17
-  selected: 0
+  selectionStatus: 32
   safeZone: 103
 --- !u!65 &573838410
 BoxCollider:
@@ -4401,7 +4396,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 9
-  selected: 0
+  selectionStatus: 32
   safeZone: 0
 --- !u!65 &595574106
 BoxCollider:
@@ -4523,8 +4518,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentID: 0
-  selected: {r: 1, g: 1, b: 0, a: 1}
-  unSelected: {r: 1, g: 1, b: 1, a: 1}
   pawnNumber: 2
   color: 114
 --- !u!1 &618392103
@@ -4623,7 +4616,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 1
-  selected: 0
+  selectionStatus: 32
   safeZone: 0
 --- !u!65 &618392107
 BoxCollider:
@@ -4670,7 +4663,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 65
-  selected: 0
+  selectionStatus: 32
   safeZone: 121
 --- !u!212 &662080798
 SpriteRenderer:
@@ -4845,7 +4838,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 27
-  selected: 0
+  selectionStatus: 32
   safeZone: 0
 --- !u!65 &672601111
 BoxCollider:
@@ -4892,7 +4885,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 83
-  selected: 0
+  selectionStatus: 32
   safeZone: 98
 --- !u!212 &686187466
 SpriteRenderer:
@@ -5067,7 +5060,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 32
-  selected: 0
+  selectionStatus: 32
   safeZone: 114
 --- !u!65 &712486018
 BoxCollider:
@@ -5128,7 +5121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 64
-  selected: 0
+  selectionStatus: 32
   safeZone: 121
 --- !u!212 &758279863
 SpriteRenderer:
@@ -5239,7 +5232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 72
-  selected: 0
+  selectionStatus: 32
   safeZone: 114
 --- !u!212 &811848942
 SpriteRenderer:
@@ -5400,7 +5393,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 3
-  selected: 0
+  selectionStatus: 32
   safeZone: 0
 --- !u!65 &829002383
 BoxCollider:
@@ -5522,8 +5515,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentID: 0
-  selected: {r: 1, g: 1, b: 0, a: 1}
-  unSelected: {r: 1, g: 1, b: 1, a: 1}
   pawnNumber: 1
   color: 103
 --- !u!1 &862299354
@@ -5714,8 +5705,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentID: 0
-  selected: {r: 1, g: 1, b: 0, a: 1}
-  unSelected: {r: 1, g: 1, b: 1, a: 1}
   pawnNumber: 3
   color: 98
 --- !u!1 &889397088
@@ -5825,8 +5814,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentID: 0
-  selected: {r: 1, g: 1, b: 0, a: 1}
-  unSelected: {r: 1, g: 1, b: 1, a: 1}
   pawnNumber: 1
   color: 103
 --- !u!1 &891416799
@@ -5925,7 +5912,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 13
-  selected: 0
+  selectionStatus: 32
   safeZone: 0
 --- !u!65 &891416803
 BoxCollider:
@@ -6036,7 +6023,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 2
-  selected: 0
+  selectionStatus: 32
   safeZone: 121
 --- !u!65 &905922749
 BoxCollider:
@@ -6147,7 +6134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 14
-  selected: 0
+  selectionStatus: 32
   safeZone: 0
 --- !u!65 &936881766
 BoxCollider:
@@ -6258,7 +6245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 12
-  selected: 0
+  selectionStatus: 32
   safeZone: 0
 --- !u!65 &937578675
 BoxCollider:
@@ -6369,7 +6356,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 28
-  selected: 0
+  selectionStatus: 32
   safeZone: 0
 --- !u!65 &953596983
 BoxCollider:
@@ -6480,7 +6467,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 8
-  selected: 0
+  selectionStatus: 32
   safeZone: 0
 --- !u!65 &968406262
 BoxCollider:
@@ -6591,7 +6578,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 44
-  selected: 0
+  selectionStatus: 32
   safeZone: 0
 --- !u!65 &1016834945
 BoxCollider:
@@ -6702,7 +6689,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 24
-  selected: 0
+  selectionStatus: 32
   safeZone: 0
 --- !u!65 &1023847141
 BoxCollider:
@@ -6749,7 +6736,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 77
-  selected: 0
+  selectionStatus: 32
   safeZone: 114
 --- !u!212 &1044092333
 SpriteRenderer:
@@ -6924,7 +6911,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 48
-  selected: 0
+  selectionStatus: 32
   safeZone: 0
 --- !u!65 &1072798576
 BoxCollider:
@@ -7035,7 +7022,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 57
-  selected: 0
+  selectionStatus: 32
   safeZone: 0
 --- !u!65 &1085449720
 BoxCollider:
@@ -7146,7 +7133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 30
-  selected: 0
+  selectionStatus: 32
   safeZone: 0
 --- !u!65 &1167510983
 BoxCollider:
@@ -7257,7 +7244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 18
-  selected: 0
+  selectionStatus: 32
   safeZone: 0
 --- !u!65 &1172272046
 BoxCollider:
@@ -7304,7 +7291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 71
-  selected: 0
+  selectionStatus: 32
   safeZone: 103
 --- !u!212 &1244399478
 SpriteRenderer:
@@ -7479,7 +7466,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 58
-  selected: 0
+  selectionStatus: 32
   safeZone: 0
 --- !u!65 &1281592104
 BoxCollider:
@@ -7601,8 +7588,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentID: 0
-  selected: {r: 1, g: 1, b: 0, a: 1}
-  unSelected: {r: 1, g: 1, b: 1, a: 1}
   pawnNumber: 0
   color: 121
 --- !u!1 &1338593461
@@ -7651,7 +7636,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 62
-  selected: 0
+  selectionStatus: 32
   safeZone: 121
 --- !u!212 &1338593464
 SpriteRenderer:
@@ -7927,7 +7912,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 31
-  selected: 0
+  selectionStatus: 32
   safeZone: 0
 --- !u!65 &1350921627
 BoxCollider:
@@ -7974,7 +7959,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 80
-  selected: 0
+  selectionStatus: 32
   safeZone: 98
 --- !u!212 &1364548914
 SpriteRenderer:
@@ -8149,7 +8134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 19
-  selected: 0
+  selectionStatus: 32
   safeZone: 0
 --- !u!65 &1374999386
 BoxCollider:
@@ -8260,7 +8245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 49
-  selected: 0
+  selectionStatus: 32
   safeZone: 0
 --- !u!65 &1382009482
 BoxCollider:
@@ -8371,7 +8356,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 20
-  selected: 0
+  selectionStatus: 32
   safeZone: 0
 --- !u!65 &1402576350
 BoxCollider:
@@ -8418,7 +8403,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 73
-  selected: 0
+  selectionStatus: 32
   safeZone: 114
 --- !u!212 &1496684450
 SpriteRenderer:
@@ -8593,7 +8578,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 46
-  selected: 0
+  selectionStatus: 32
   safeZone: 0
 --- !u!65 &1524020769
 BoxCollider:
@@ -8654,7 +8639,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 63
-  selected: 0
+  selectionStatus: 32
   safeZone: 121
 --- !u!212 &1532697088
 SpriteRenderer:
@@ -8896,7 +8881,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 0
-  selected: 0
+  selectionStatus: 32
   safeZone: 0
 --- !u!65 &1562735113
 BoxCollider:
@@ -9007,7 +8992,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 22
-  selected: 0
+  selectionStatus: 32
   safeZone: 0
 --- !u!65 &1608694896
 BoxCollider:
@@ -9068,7 +9053,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 68
-  selected: 0
+  selectionStatus: 32
   safeZone: 103
 --- !u!212 &1614768743
 SpriteRenderer:
@@ -9229,7 +9214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 25
-  selected: 0
+  selectionStatus: 32
   safeZone: 0
 --- !u!65 &1626060554
 BoxCollider:
@@ -9340,7 +9325,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 52
-  selected: 0
+  selectionStatus: 32
   safeZone: 0
 --- !u!65 &1629464118
 BoxCollider:
@@ -9451,7 +9436,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 7
-  selected: 0
+  selectionStatus: 32
   safeZone: 0
 --- !u!65 &1634645090
 BoxCollider:
@@ -9562,7 +9547,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 36
-  selected: 0
+  selectionStatus: 32
   safeZone: 0
 --- !u!65 &1645107223
 BoxCollider:
@@ -9623,7 +9608,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 61
-  selected: 0
+  selectionStatus: 32
   safeZone: 121
 --- !u!212 &1704687828
 SpriteRenderer:
@@ -9720,7 +9705,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 82
-  selected: 0
+  selectionStatus: 32
   safeZone: 98
 --- !u!212 &1718007177
 SpriteRenderer:
@@ -9831,7 +9816,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 70
-  selected: 0
+  selectionStatus: 32
   safeZone: 103
 --- !u!212 &1729828747
 SpriteRenderer:
@@ -10017,8 +10002,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentID: 0
-  selected: {r: 1, g: 1, b: 0, a: 1}
-  unSelected: {r: 1, g: 1, b: 1, a: 1}
   pawnNumber: 2
   color: 114
 --- !u!1 &1798035554
@@ -10067,7 +10050,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 66
-  selected: 0
+  selectionStatus: 32
   safeZone: 103
 --- !u!212 &1798035557
 SpriteRenderer:
@@ -10228,7 +10211,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 54
-  selected: 0
+  selectionStatus: 32
   safeZone: 0
 --- !u!65 &1859125846
 BoxCollider:
@@ -10339,7 +10322,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 59
-  selected: 0
+  selectionStatus: 32
   safeZone: 0
 --- !u!65 &1867474914
 BoxCollider:
@@ -10450,7 +10433,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 35
-  selected: 0
+  selectionStatus: 32
   safeZone: 0
 --- !u!65 &1876161123
 BoxCollider:
@@ -10561,7 +10544,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 53
-  selected: 0
+  selectionStatus: 32
   safeZone: 0
 --- !u!65 &1913662661
 BoxCollider:
@@ -10672,7 +10655,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 45
-  selected: 0
+  selectionStatus: 32
   safeZone: 0
 --- !u!65 &1921848281
 BoxCollider:
@@ -10783,7 +10766,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 10
-  selected: 0
+  selectionStatus: 32
   safeZone: 0
 --- !u!65 &1936565779
 BoxCollider:
@@ -10894,7 +10877,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 50
-  selected: 0
+  selectionStatus: 32
   safeZone: 0
 --- !u!65 &1952584000
 BoxCollider:
@@ -10941,7 +10924,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 81
-  selected: 0
+  selectionStatus: 32
   safeZone: 98
 --- !u!212 &1987780195
 SpriteRenderer:
@@ -11116,7 +11099,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 5
-  selected: 0
+  selectionStatus: 32
   safeZone: 0
 --- !u!65 &2066301974
 BoxCollider:
@@ -11238,8 +11221,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentID: 0
-  selected: {r: 1, g: 1, b: 0, a: 1}
-  unSelected: {r: 1, g: 1, b: 1, a: 1}
   pawnNumber: 2
   color: 114
 --- !u!1 &2089604918
@@ -11338,7 +11319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 16
-  selected: 0
+  selectionStatus: 32
   safeZone: 0
 --- !u!65 &2089604922
 BoxCollider:
@@ -11449,7 +11430,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 37
-  selected: 0
+  selectionStatus: 32
   safeZone: 0
 --- !u!65 &2113099921
 BoxCollider:
@@ -11571,8 +11552,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentID: 0
-  selected: {r: 1, g: 1, b: 0, a: 1}
-  unSelected: {r: 1, g: 1, b: 1, a: 1}
   pawnNumber: 3
   color: 98
 --- !u!1 &2122782470
@@ -11607,7 +11586,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squareID: 74
-  selected: 0
+  selectionStatus: 32
   safeZone: 114
 --- !u!212 &2122782472
 SpriteRenderer:

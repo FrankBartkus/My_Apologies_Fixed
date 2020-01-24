@@ -5,10 +5,9 @@ using UnityEngine;
 public class PawnMove : MonoBehaviour
 {
     public int currentID;
-    public Color selected;
-    public Color unSelected;
     public int pawnNumber;
-    static List<int> movedPawnNumber = new List<int>();
+    static List<int> movedPawnNumberTest = new List<int>();
+    static List<int> movedPawnNumberReal = new List<int>();
     static bool selectionMade = false;
     static int sevenMove = 7;
     GameManager manager;
@@ -16,7 +15,7 @@ public class PawnMove : MonoBehaviour
     GameObject moveTo;
     bool start = true;
     public char color;
-    float timer = 0.0f;
+    static float timer = 0.0f;
     int[] yellow = { 2, 0 };
     int[] green = { 17, 7 };
     int[] red = { 32, 14 };
@@ -38,36 +37,35 @@ public class PawnMove : MonoBehaviour
             {
                 if (hit.transform.gameObject.GetComponent<PawnMove>() != null)
                 {
-                    Debug.Log(hit.transform.gameObject.GetComponent<PawnMove>().pawnNumber);
                     if (manager.turn == 0 && color == 'y' || manager.turn == 1 && color == 'g' || manager.turn == 2 && color == 'r' || manager.turn == 3 && color == 'b')
                     {
                         if (moveBy != 0 && !selectionMade)
                         {
                             if (hit.transform.gameObject.GetComponent<PawnMove>().pawnNumber == pawnNumber)
                             {
-                                if(movedPawnNumber.Count > 0)
-                                    movedPawnNumber.RemoveAt(movedPawnNumber.Count - 1);
-                                movedPawnNumber.Add(pawnNumber);
+                                if(movedPawnNumberTest.Count > 0)
+                                    movedPawnNumberTest.RemoveAt(movedPawnNumberTest.Count - 1);
+                                movedPawnNumberTest.Add(pawnNumber);
                                 switch(moveBy)
                                 {
                                     case 4:
-                                        manager.board_[findId(-4)].GetComponent<Square>().selected = true;
+                                        manager.board_[findId(-4)].GetComponent<Square>().selectionStatus = 'g';
                                         break;
                                     case 7:
-                                        if(movedPawnNumber.Count > 1)
+                                        if(movedPawnNumberReal.Count > 0)
                                         {
-                                            manager.board_[findId(sevenMove)].GetComponent<Square>().selected = true;
+                                            manager.board_[findId(sevenMove)].GetComponent<Square>().selectionStatus = 'g';
                                         }
                                         else
                                         {
                                             for (int i = 1; i <= sevenMove; i++)
                                             {
-                                                manager.board_[findId(i)].GetComponent<Square>().selected = true;
+                                                manager.board_[findId(i)].GetComponent<Square>().selectionStatus = 'y';
                                             }
                                         }
                                         break;
                                     default:
-                                        manager.board_[findId(moveBy)].GetComponent<Square>().selected = true;
+                                        manager.board_[findId(moveBy)].GetComponent<Square>().selectionStatus = 'g';
                                         break;
                                 }
                             }
@@ -78,7 +76,7 @@ public class PawnMove : MonoBehaviour
                 {
                     if(moveBy == 7)
                     {
-                        if (movedPawnNumber.Count > 0)
+                        if (movedPawnNumberTest.Count > 0)
                         {
                             bool on = false;
                             for (int i = 1; i <= sevenMove; i++)
@@ -94,10 +92,10 @@ public class PawnMove : MonoBehaviour
                                 {
                                     if(manager.board_[findId(i)].GetComponent<Square>().squareID == hit.transform.gameObject.GetComponent<Square>().squareID)
                                     {
-                                        sevenMove -= i;
+                                        manager.board_[findId(i)].GetComponent<Square>().selectionStatus = 'g';
                                     }
-                                    else
-                                       manager.board_[findId(i)].GetComponent<Square>().selected = false;
+                                    else if(movedPawnNumberReal.Count == 0)
+                                       manager.board_[findId(i)].GetComponent<Square>().selectionStatus = 'y';
                                 }
                             }
                         }
@@ -158,51 +156,52 @@ public class PawnMove : MonoBehaviour
         {
             return ((id + i) % 60 + 60 - number[0] + number[1] - 1);
         }
-        return (id + i) % 60;
-    }
-    void lightBoard()
-    {
-        for (int j = 0; j < 60 + 4 * 7; j++)
-        {
-            if (manager.board_[j] != null)
-            {
-                if (manager.board_[j].GetComponent<Square>().selected)
-                    manager.board_[j].GetComponent<SpriteRenderer>().color = selected;
-                else
-                    manager.board_[j].GetComponent<SpriteRenderer>().color = unSelected;
-            }
-        }
+        return (id + i + 60) % 60;
     }
     // Update is called once per frame
     void Update()
     {
         MyOnMouseDown();
-        lightBoard();
         if (Input.GetKeyDown(KeyCode.Space))
         {
             int count = (moveBy == 7) ? 1 : 0;
-            if (movedPawnNumber.Count > 0)
+            if (movedPawnNumberTest.Count > 0)
             {
-                if (movedPawnNumber[movedPawnNumber.Count - 1] == pawnNumber)
+                if (movedPawnNumberTest[movedPawnNumberTest.Count - 1] == pawnNumber)
                 {
                     if (Selected() == 1)
                     {
+                        movedPawnNumberReal.Add(movedPawnNumberTest[0]);
+                        movedPawnNumberTest.Clear();
                         for (int j = 0; j < 60 + 4 * 7; j++)
                         {
                             if (manager.board_[j] != null)
                             {
-                                if (manager.board_[j].GetComponent<Square>().selected)
+                                if (manager.board_[j].GetComponent<Square>().selectionStatus != ' ')
                                 {
-                                    moveTo = manager.board_[j];
-                                    manager.board_[j].GetComponent<Square>().selected = false;
+                                    if (manager.board_[j].GetComponent<Square>().selectionStatus == 'g')
+                                    {
+                                        if (moveBy == 7)
+                                        {
+                                            for (int i = 1; i <= 7; i++)
+                                            {
+                                                if (findId(i) == j)
+                                                {
+                                                    sevenMove -= i;
+                                                }
+                                            }
+                                        }
+                                        moveTo = manager.board_[j];
+                                    }
+                                    manager.board_[j].GetComponent<Square>().selectionStatus = ' ';
                                 }
                             }
                         }
                         if (start) start = false;
-                        if (movedPawnNumber.Count > count)
+                        if (movedPawnNumberReal.Count > count)
                         {
                             moveBy = 0;
-                            timer = 1.5f;
+                            timer = 1.0f;
                             selectionMade = true;
                         }
                     }
@@ -241,17 +240,17 @@ public class PawnMove : MonoBehaviour
         }
         if (moveTo != null && selectionMade)
         {
-            moveTo.GetComponent<SpriteRenderer>().color = unSelected;
-            if (timer > 1.2f)
+            Debug.Log(pawnNumber + " " + moveTo.GetComponent<Square>().squareID);
+            if (timer > 0.9f)
             {
                 LeanTween.moveLocalY(gameObject, moveTo.transform.position.y + 1.25f, 0.3f);
             }
-            else if (timer > 0.9f)
+            else if (timer > 0.6f)
             {
                 LeanTween.moveLocalZ(gameObject, moveTo.transform.position.z + (Random.value - 0.5f) / 4, 0.3f);
                 LeanTween.moveLocalX(gameObject, moveTo.transform.position.x + (Random.value - 0.5f) / 4, 0.3f);
             }
-            else if (timer > 0.6f)
+            else if (timer > 0.0f)
             {
                 LeanTween.moveLocalY(gameObject, moveTo.transform.position.y + 0.25f, 0.3f);
             }
@@ -261,9 +260,9 @@ public class PawnMove : MonoBehaviour
                 currentID = moveTo.GetComponent<Square>().squareID;
                 moveBy = 0;
                 moveTo = null;
-                movedPawnNumber.Clear();
+                movedPawnNumberReal.Clear();
                 selectionMade = false;
-                manager.turn = ++manager.turn % 2;
+                manager.turn = ++manager.turn % 1;
             }
             timer -= Time.deltaTime;
         }
@@ -275,7 +274,7 @@ public class PawnMove : MonoBehaviour
         {
             if (manager.board_[j] != null)
             {
-                if (manager.board_[j].GetComponent<Square>().selected)
+                if (manager.board_[j].GetComponent<Square>().selectionStatus == 'g')
                     numberOfPiecesSelected++;
             }
         }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Square : MonoBehaviour
 {
     public int squareID;
-    public bool selected = false;
+    public char selectionStatus = ' ';
     public char safeZone = ' ';
     // Start is called before the first frame update
     void Start()
