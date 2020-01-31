@@ -28,31 +28,31 @@ public class GameManager : MonoBehaviour
             switch (board.GetComponent<Square>().safeZone)
             {
                 case 'y':
-                    for (int j = 0; j < 7; j++)
+                    for (int j = 0; j < 6; j++)
                     {
                         if (board.GetComponent<Square>().squareID == j + 60)
                             board_[60 + j] = board;
                     }
                     break;
                 case 'g':
-                    for (int j = 0; j < 7; j++)
+                    for (int j = 0; j <= 6; j++)
                     {
-                        if (board.GetComponent<Square>().squareID == j + 60)
-                            board_[60 + j + 7] = board;
+                        if (board.GetComponent<Square>().squareID == j + 60 + 6)
+                            board_[60 + j + 6] = board;
                     }
                     break;
                 case 'r':
-                    for (int j = 0; j < 7; j++)
+                    for (int j = 0; j <= 6; j++)
                     {
-                        if (board.GetComponent<Square>().squareID == j + 60)
-                            board_[60 + j + 14] = board;
+                        if (board.GetComponent<Square>().squareID == j + 60 + 12)
+                            board_[60 + j + 12] = board;
                     }
                     break;
                 case 'b':
-                    for (int j = 0; j < 7; j++)
+                    for (int j = 0; j <= 6; j++)
                     {
-                        if (board.GetComponent<Square>().squareID == j + 60)
-                            board_[60 + j + 21] = board;
+                        if (board.GetComponent<Square>().squareID == j + 60 + 18)
+                            board_[60 + j + 18] = board;
                     }
                     break;
             }
@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
-        for (int j = 0; j < 60 + 4 * 7; j++)
+        for (int j = 0; j < 60 + 4 * 6; j++)
         {
             if (board_[j] != null)
             {

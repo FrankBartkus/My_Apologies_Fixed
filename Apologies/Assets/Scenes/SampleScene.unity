@@ -3760,7 +3760,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 1350299668}
-  m_RootOrder: 80
+  m_RootOrder: 79
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!65 &527758511
 BoxCollider:
@@ -4645,7 +4645,7 @@ GameObject:
   - component: {fileID: 662080800}
   m_Layer: 0
   m_Name: Home (4)
-  m_TagString: Untagged
+  m_TagString: Board
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4727,7 +4727,7 @@ Transform:
   m_LocalScale: {x: 1.525, y: 1.5250009, z: 2}
   m_Children: []
   m_Father: {fileID: 1350299668}
-  m_RootOrder: 79
+  m_RootOrder: 81
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!65 &662080800
 BoxCollider:
@@ -4867,7 +4867,7 @@ GameObject:
   - component: {fileID: 686187468}
   m_Layer: 0
   m_Name: Home (7)
-  m_TagString: Untagged
+  m_TagString: Board
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6718,7 +6718,7 @@ GameObject:
   - component: {fileID: 1044092335}
   m_Layer: 0
   m_Name: Home (6)
-  m_TagString: Untagged
+  m_TagString: Board
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7273,7 +7273,7 @@ GameObject:
   - component: {fileID: 1244399480}
   m_Layer: 0
   m_Name: Home (5)
-  m_TagString: Untagged
+  m_TagString: Board
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7807,9 +7807,9 @@ Transform:
   - {fileID: 1987780196}
   - {fileID: 1718007178}
   - {fileID: 54392503}
-  - {fileID: 662080799}
   - {fileID: 527758510}
   - {fileID: 1729828748}
+  - {fileID: 662080799}
   - {fileID: 1244399479}
   - {fileID: 1044092334}
   - {fileID: 686187467}
@@ -9880,7 +9880,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 1350299668}
-  m_RootOrder: 81
+  m_RootOrder: 80
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!65 &1729828749
 BoxCollider:

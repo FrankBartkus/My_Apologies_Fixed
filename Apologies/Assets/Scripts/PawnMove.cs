@@ -17,9 +17,9 @@ public class PawnMove : MonoBehaviour
     public char color;
     static float timer = 0.0f;
     int[] yellow = { 2, 0 };
-    int[] green = { 17, 7 };
-    int[] red = { 32, 14 };
-    int[] blue = { 47, 21 };
+    int[] green = { 17, 6 };
+    int[] red = { 32, 12 };
+    int[] blue = { 47, 18 };
     // Start is called before the first frame update
     void Start()
     {
@@ -43,8 +43,7 @@ public class PawnMove : MonoBehaviour
                         {
                             if (hit.transform.gameObject.GetComponent<PawnMove>().pawnNumber == pawnNumber)
                             {
-                                if(movedPawnNumberTest.Count > 0)
-                                    movedPawnNumberTest.RemoveAt(movedPawnNumberTest.Count - 1);
+                                ClearList(movedPawnNumberTest);
                                 movedPawnNumberTest.Add(pawnNumber);
                                 switch(moveBy)
                                 {
@@ -74,7 +73,11 @@ public class PawnMove : MonoBehaviour
                 }
                 if (hit.transform.gameObject.GetComponent<Square>() != null)
                 {
-                    if(moveBy == 7)
+                    if(manager.board_[hit.transform.gameObject.GetComponent<Square>().squareID] == null)
+                        Debug.Log(false);
+                    else
+                        Debug.Log(manager.board_[hit.transform.gameObject.GetComponent<Square>().squareID].GetComponent<Square>().squareID);
+                    if (moveBy == 7)
                     {
                         if (movedPawnNumberTest.Count > 0)
                         {
@@ -107,6 +110,22 @@ public class PawnMove : MonoBehaviour
     int findId(int i)
     {
         int id = currentID;
+        int[] number = new int[2];
+        switch (color)
+        {
+            case 'y':
+                number = yellow;
+                break;
+            case 'g':
+                number = green;
+                break;
+            case 'r':
+                number = red;
+                break;
+            case 'b':
+                number = blue;
+                break;
+        }
         if (start)
         {
             id++;
@@ -130,27 +149,15 @@ public class PawnMove : MonoBehaviour
         {
             if (start)
                 id += 2;
-            return (id + i + 60) % 60;
+            if(id >= 60)
+            {
+
+            }
         }
-        int[] number = new int[2];
-        switch (color)
-        {
-            case 'y':
-                number = yellow;
-                break;
-            case 'g':
-                number = green;
-                break;
-            case 'r':
-                number = red;
-                break;
-            case 'b':
-                number = blue;
-                break;
-        }
+        // If in safezone
         if (id > 60 - 1 + number[1])
         {
-            return (id + i < 60 + 7 - 1 - 1 + number[1]) ? id + i : id;
+            return (id + i < 60 + 6 - 1 + number[1]) ? id + i : id;
         }
         else if ((id + i + 60 - number[0] - 1) % 60 < (id + 60 - number[0] - 1) % 60)
         {
@@ -172,7 +179,7 @@ public class PawnMove : MonoBehaviour
                     if (Selected() == 1)
                     {
                         movedPawnNumberReal.Add(movedPawnNumberTest[0]);
-                        movedPawnNumberTest.Clear();
+                        ClearList(movedPawnNumberTest);
                         for (int j = 0; j < 60 + 4 * 7; j++)
                         {
                             if (manager.board_[j] != null)
@@ -240,7 +247,7 @@ public class PawnMove : MonoBehaviour
         }
         if (moveTo != null && selectionMade)
         {
-            Debug.Log(pawnNumber + " " + moveTo.GetComponent<Square>().squareID);
+            //  Debug.Log(pawnNumber + " " + moveTo.GetComponent<Square>().squareID);
             if (timer > 0.9f)
             {
                 LeanTween.moveLocalY(gameObject, moveTo.transform.position.y + 1.25f, 0.3f);
@@ -260,7 +267,7 @@ public class PawnMove : MonoBehaviour
                 currentID = moveTo.GetComponent<Square>().squareID;
                 moveBy = 0;
                 moveTo = null;
-                movedPawnNumberReal.Clear();
+                ClearList(movedPawnNumberReal);
                 selectionMade = false;
                 manager.turn = ++manager.turn % 1;
             }
@@ -279,5 +286,11 @@ public class PawnMove : MonoBehaviour
             }
         }
         return numberOfPiecesSelected;
+    }
+    void ClearList(List<int> listToClear)
+    {
+        int count = listToClear.Count;
+        for (int i = 0; i < count; i++)
+            listToClear.RemoveAt(0);
     }
 }
