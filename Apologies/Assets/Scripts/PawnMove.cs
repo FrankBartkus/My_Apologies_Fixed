@@ -9,6 +9,7 @@ public class PawnMove : MonoBehaviour
     static List<int> movedPawnNumberTest = new List<int>();
     static List<int> movedPawnNumberReal = new List<int>();
     static bool selectionMade = false;
+    static bool goThroughAll = false;
     static int sevenMove = 7;
     GameManager manager;
     int moveBy;
@@ -16,10 +17,10 @@ public class PawnMove : MonoBehaviour
     bool start = true;
     public char color;
     static float timer = 0.0f;
-    int[] yellow = { 2, 0 };
-    int[] green = { 17, 6 };
-    int[] red = { 32, 12 };
-    int[] blue = { 47, 18 };
+    int yellow = 0;
+    int green = 1;
+    int red = 2;
+    int blue = 3;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,12 +38,14 @@ public class PawnMove : MonoBehaviour
             {
                 if (hit.transform.gameObject.GetComponent<PawnMove>() != null)
                 {
-                    if (manager.turn == 0 && color == 'y' || manager.turn == 1 && color == 'g' || manager.turn == 2 && color == 'r' || manager.turn == 3 && color == 'b')
+                    bool ourPawn = (manager.turn == 0 && color == 'y') || (manager.turn == 1 && color == 'g') || (manager.turn == 2 && color == 'r') || (manager.turn == 3 && color == 'b');
+                    if (ourPawn || goThroughAll)
                     {
-                        if (moveBy != 0 && !selectionMade)
+                        if (moveBy != 0 && !selectionMade || goThroughAll)
                         {
                             if (hit.transform.gameObject.GetComponent<PawnMove>().pawnNumber == pawnNumber)
                             {
+                                Debug.Log(manager.turn + ", " + color + ", " + pawnNumber);
                                 ClearList(movedPawnNumberTest);
                                 movedPawnNumberTest.Add(pawnNumber);
                                 switch(moveBy)
@@ -57,6 +60,10 @@ public class PawnMove : MonoBehaviour
                                         }
                                         else
                                         {
+                                            for (int i = 1; i < 60 + 6*4; i++)
+                                            {
+                                                manager.board_[i].GetComponent<Square>().selectionStatus = ' ';
+                                            }
                                             for (int i = 1; i <= sevenMove; i++)
                                             {
                                                 manager.board_[findId(i)].GetComponent<Square>().selectionStatus = 'y';
@@ -64,7 +71,30 @@ public class PawnMove : MonoBehaviour
                                         }
                                         break;
                                     default:
-                                        manager.board_[findId(moveBy)].GetComponent<Square>().selectionStatus = 'g';
+                                        if(goThroughAll)
+                                        {
+                                            int realMove = -1;
+                                            GameObject[] pawns = GameObject.FindGameObjectsWithTag("Player");
+                                            foreach (GameObject pawn in pawns)
+                                            {
+                                                if (pawn.GetComponent<PawnMove>().moveBy != 0)
+                                                {
+                                                    realMove = pawn.GetComponent<PawnMove>().moveBy;
+                                                    break;
+                                                }
+                                            }
+                                            switch(realMove)
+                                            {
+                                                case 3:
+                                                    if (ourPawn)
+                                                        manager.board_[findId(3)].GetComponent<Square>().selectionStatus = 'g';
+                                                    else
+                                                        manager.board_[findId(-3)].GetComponent<Square>().selectionStatus = 'g';
+                                                    break;
+                                            }
+                                        }
+                                        else
+                                            manager.board_[findId(moveBy)].GetComponent<Square>().selectionStatus = 'g';
                                         break;
                                 }
                             }
@@ -73,10 +103,10 @@ public class PawnMove : MonoBehaviour
                 }
                 if (hit.transform.gameObject.GetComponent<Square>() != null)
                 {
-                    if(manager.board_[hit.transform.gameObject.GetComponent<Square>().squareID] == null)
-                        Debug.Log(false);
-                    else
-                        Debug.Log(manager.board_[hit.transform.gameObject.GetComponent<Square>().squareID].GetComponent<Square>().squareID);
+                    //  if(manager.board_[hit.transform.gameObject.GetComponent<Square>().squareID] == null)
+                    //      Debug.Log(false);
+                    //  else
+                    //      Debug.Log(manager.board_[hit.transform.gameObject.GetComponent<Square>().squareID].GetComponent<Square>().squareID);
                     if (moveBy == 7)
                     {
                         if (movedPawnNumberTest.Count > 0)
@@ -85,18 +115,14 @@ public class PawnMove : MonoBehaviour
                             for (int i = 1; i <= sevenMove; i++)
                             {
                                 if (manager.board_[findId(i)] == hit.transform.gameObject)
-                                {
                                     on = true;
-                                }
                             }
                             if (on)
                             {
                                 for (int i = 1; i <= 7; i++)
                                 {
                                     if(manager.board_[findId(i)].GetComponent<Square>().squareID == hit.transform.gameObject.GetComponent<Square>().squareID)
-                                    {
                                         manager.board_[findId(i)].GetComponent<Square>().selectionStatus = 'g';
-                                    }
                                     else if(movedPawnNumberReal.Count == 0)
                                        manager.board_[findId(i)].GetComponent<Square>().selectionStatus = 'y';
                                 }
@@ -110,7 +136,7 @@ public class PawnMove : MonoBehaviour
     int findId(int i)
     {
         int id = currentID;
-        int[] number = new int[2];
+        int number = 0;
         switch (color)
         {
             case 'y':
@@ -132,38 +158,30 @@ public class PawnMove : MonoBehaviour
             switch (color)
             {
                 case 'y':
-                    id = yellow[0] + 1;
+                    id = yellow + 1;
                     break;
                 case 'g':
-                    id = green[0] + 1;
+                    id = green + 1;
                     break;
                 case 'r':
-                    id = red[0] + 1;
+                    id = red + 1;
                     break;
                 case 'b':
-                    id = blue[0] + 1;
+                    id = blue + 1;
                     break;
             }
         }
         if (i < 0)
         {
+            Debug.Log(pawnNumber);
             if (start)
-                id += 2;
-            if(id >= 60)
-            {
-
-            }
+                return id;
         }
-        // If in safezone
-        if (id > 60 - 1 + number[1])
-        {
-            return (id + i < 60 + 6 - 1 + number[1]) ? id + i : id;
-        }
-        else if ((id + i + 60 - number[0] - 1) % 60 < (id + 60 - number[0] - 1) % 60)
-        {
-            return ((id + i) % 60 + 60 - number[0] + number[1] - 1);
-        }
-        return (id + i + 60) % 60;
+        if(id < 60)
+            return (id + i + 60) % 60;
+        else if(id + i < 60 + 6 * number)
+            return (id + i + number + 3) % 60;
+        return id + i;
     }
     // Update is called once per frame
     void Update()
@@ -193,9 +211,7 @@ public class PawnMove : MonoBehaviour
                                             for (int i = 1; i <= 7; i++)
                                             {
                                                 if (findId(i) == j)
-                                                {
                                                     sevenMove -= i;
-                                                }
                                             }
                                         }
                                         moveTo = manager.board_[j];
@@ -205,7 +221,7 @@ public class PawnMove : MonoBehaviour
                             }
                         }
                         if (start) start = false;
-                        if (movedPawnNumberReal.Count > count)
+                        if (movedPawnNumberReal.Count > count || sevenMove == 0)
                         {
                             moveBy = 0;
                             timer = 1.0f;
@@ -219,30 +235,23 @@ public class PawnMove : MonoBehaviour
         {
             if (moveBy == 0)
             {
+                if (Input.GetKeyDown(KeyCode.Alpha3))
+                {
+                    goThroughAll = true;
+                    moveBy = 3;
+                }
                 if (Input.GetKeyDown(KeyCode.Alpha4))
-                {
                     moveBy = 4;
-                }
                 if (Input.GetKeyDown(KeyCode.Alpha5))
-                {
                     moveBy = 5;
-                }
                 if (Input.GetKeyDown(KeyCode.Alpha6))
-                {
                     moveBy = 6;
-                }
                 if (Input.GetKeyDown(KeyCode.Alpha7))
-                {
                     moveBy = 7;
-                }
                 if (Input.GetKeyDown(KeyCode.Alpha8))
-                {
                     moveBy = 8;
-                }
                 if (Input.GetKeyDown(KeyCode.Alpha9))
-                {
                     moveBy = 9;
-                }
             }
         }
         if (moveTo != null && selectionMade)
@@ -263,13 +272,23 @@ public class PawnMove : MonoBehaviour
             }
             else
             {
+                GameObject[] pawns = GameObject.FindGameObjectsWithTag("Player");
+                foreach (GameObject pawn in pawns)
+                {
+                    
+                    if(pawn.GetComponent<PawnMove>().moveTo != null)
+                    {
+                        pawn.GetComponent<PawnMove>().currentID = pawn.GetComponent<PawnMove>().moveTo.GetComponent<Square>().squareID;
+                        pawn.GetComponent<PawnMove>().moveTo = null;
+                    }
+                    pawn.GetComponent<PawnMove>().moveBy = 0;
+                    pawn.GetComponent<PawnMove>().ClearList(movedPawnNumberReal);
+                }
+                goThroughAll = false;
+                sevenMove = 7;
                 timer = 0.0f;
-                currentID = moveTo.GetComponent<Square>().squareID;
-                moveBy = 0;
-                moveTo = null;
-                ClearList(movedPawnNumberReal);
                 selectionMade = false;
-                manager.turn = ++manager.turn % 1;
+                manager.turn = ++manager.turn % 2;
             }
             timer -= Time.deltaTime;
         }
