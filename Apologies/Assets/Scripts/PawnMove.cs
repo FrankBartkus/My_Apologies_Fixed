@@ -133,7 +133,7 @@ public class PawnMove : MonoBehaviour
             }
         }
     }
-    int findId(int i)
+    int findId(int moveAmount)
     {
         int id = currentID;
         int number = 0;
@@ -154,34 +154,27 @@ public class PawnMove : MonoBehaviour
         }
         if (start)
         {
-            id++;
-            switch (color)
-            {
-                case 'y':
-                    id = yellow + 1;
-                    break;
-                case 'g':
-                    id = green + 1;
-                    break;
-                case 'r':
-                    id = red + 1;
-                    break;
-                case 'b':
-                    id = blue + 1;
-                    break;
-            }
+            id = number * 15 + 3;
         }
-        if (i < 0)
+        if (moveAmount < 0)
         {
             Debug.Log(pawnNumber);
             if (start)
                 return id;
         }
         if(id < 60)
-            return (id + i + 60) % 60;
-        else if(id + i < 60 + 6 * number)
-            return (id + i + number + 3) % 60;
-        return id + i;
+        {
+            if(i > 3)
+            {
+                if ()
+                {
+
+                }
+            }
+        }
+        else if (id + moveAmount < 60 + number * 6 + 6)
+            return id;
+        return id + moveAmount;
     }
     // Update is called once per frame
     void Update()
