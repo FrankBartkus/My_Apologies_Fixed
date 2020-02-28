@@ -17,10 +17,6 @@ public class PawnMove : MonoBehaviour
     bool start = true;
     public char color;
     static float timer = 0.0f;
-    int yellow = 0;
-    int green = 1;
-    int red = 2;
-    int blue = 3;
     // Start is called before the first frame update
     void Start()
     {
@@ -48,7 +44,12 @@ public class PawnMove : MonoBehaviour
                                 Debug.Log(manager.turn + ", " + color + ", " + pawnNumber);
                                 ClearList(movedPawnNumberTest);
                                 movedPawnNumberTest.Add(pawnNumber);
-                                switch(moveBy)
+                                for (int i = 1; i < 60 + 6 * 4; i++)
+                                {
+                                    if(manager.board_[i].GetComponent<Square>().selectionStatus != ' ')
+                                        manager.board_[i].GetComponent<Square>().selectionStatus = ' ';
+                                }
+                                switch (moveBy)
                                 {
                                     case 4:
                                         manager.board_[findId(-4)].GetComponent<Square>().selectionStatus = 'g';
@@ -140,41 +141,67 @@ public class PawnMove : MonoBehaviour
         switch (color)
         {
             case 'y':
-                number = yellow;
+                number = 0;
                 break;
             case 'g':
-                number = green;
+                number = 1;
                 break;
             case 'r':
-                number = red;
+                number = 2;
                 break;
             case 'b':
-                number = blue;
+                number = 3;
                 break;
-        }
-        if (start)
-        {
-            id = number * 15 + 3;
         }
         if (moveAmount < 0)
         {
             Debug.Log(pawnNumber);
             if (start)
-                return id;
-        }
-        if(id < 60)
-        {
-            if(i > 3)
+                return 84 + number;
+            if(id >= 60 && id + moveAmount < 60 + 6 * number)
             {
-                if ()
+                Debug.Log("LeaveSafeZone");
+                return (id + moveAmount + 63 + 9 * number) % 60;
+            }
+            else if(id + moveAmount < 0)
+                return (id + moveAmount + 60);
+        }
+        if (start)
+            id = number * 15 + 3;
+        if (id < 60 + 6 * number)
+        {
+            if (id - 15 * number < 3)
+            {
+                if (id + moveAmount - 15 * number < 3)
                 {
-
+                    Debug.Log("Normal");
+                    return id + moveAmount;
                 }
+                else if (id + moveAmount + 60 - 3 - 9 * number < 66 + number * 6)
+                {
+                    Debug.Log("EnterSafeZone" + " " + id + moveAmount);
+                    return id + moveAmount + 60 - 3 - 9 * number;
+                }
+                Debug.Log("TooFar");
+                return id;
+            }
+            else if (60 + 6 * number <= id + moveAmount - 3)
+            {
+                Debug.Log("AroundToSafeZone");
+                return id + moveAmount - 3;
             }
         }
-        else if (id + moveAmount < 60 + number * 6 + 6)
+        else if (id + moveAmount < 66 + number * 6)
+        {
+            Debug.Log("SafeZone");
+            return id + moveAmount;
+        }
+        else
+        {
+            Debug.Log("TooFar");
             return id;
-        return id + moveAmount;
+        }
+        return (id + moveAmount) % 60;
     }
     // Update is called once per frame
     void Update()

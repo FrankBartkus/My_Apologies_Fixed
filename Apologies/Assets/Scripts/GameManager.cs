@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public int turn = 0;
-    public GameObject[] board_ = new GameObject[60+4*7];
+    public GameObject[] board_ = new GameObject[4 * 23];
     public Color selected;
     public Color highlighted;
     public Color unSelected;
@@ -33,12 +33,20 @@ public class GameManager : MonoBehaviour
                         if (board.GetComponent<Square>().squareID == j + 60)
                             board_[60 + j] = board;
                     }
+                    if(board.GetComponent<Square>().squareID > 83)
+                    {
+                        board_[84] = board;
+                    }
                     break;
                 case 'g':
                     for (int j = 0; j <= 6; j++)
                     {
                         if (board.GetComponent<Square>().squareID == j + 60 + 6)
                             board_[60 + j + 6] = board;
+                    }
+                    if (board.GetComponent<Square>().squareID > 83)
+                    {
+                        board_[85] = board;
                     }
                     break;
                 case 'r':
@@ -47,12 +55,20 @@ public class GameManager : MonoBehaviour
                         if (board.GetComponent<Square>().squareID == j + 60 + 12)
                             board_[60 + j + 12] = board;
                     }
+                    if (board.GetComponent<Square>().squareID > 83)
+                    {
+                        board_[86] = board;
+                    }
                     break;
                 case 'b':
                     for (int j = 0; j <= 6; j++)
                     {
                         if (board.GetComponent<Square>().squareID == j + 60 + 18)
                             board_[60 + j + 18] = board;
+                    }
+                    if (board.GetComponent<Square>().squareID > 83)
+                    {
+                        board_[87] = board;
                     }
                     break;
             }

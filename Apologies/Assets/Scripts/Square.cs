@@ -18,7 +18,7 @@ public class Square : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 100.0f))
         {
-            //  Debug.Log(hit.collider.gameObject.GetComponent<Square>().squareID);
+            Debug.Log(hit.collider.gameObject.GetComponent<Square>().squareID);
         }
     }
 }
