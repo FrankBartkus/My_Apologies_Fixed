@@ -51,6 +51,9 @@ public class PawnMove : MonoBehaviour
                                 }
                                 switch (moveBy)
                                 {
+                                    case 2:
+
+                                        break;
                                     case 4:
                                         manager.board_[findId(-4)].GetComponent<Square>().selectionStatus = 'g';
                                         break;
@@ -255,6 +258,10 @@ public class PawnMove : MonoBehaviour
         {
             if (moveBy == 0)
             {
+                if (Input.GetKeyDown(KeyCode.Alpha2))
+                    moveBy = 1;
+                if (Input.GetKeyDown(KeyCode.Alpha2))
+                    moveBy = 2;
                 if (Input.GetKeyDown(KeyCode.Alpha3))
                 {
                     goThroughAll = true;
@@ -272,6 +279,12 @@ public class PawnMove : MonoBehaviour
                     moveBy = 8;
                 if (Input.GetKeyDown(KeyCode.Alpha9))
                     moveBy = 9;
+                if (Input.GetKeyDown(KeyCode.Alpha0))
+                    moveBy = 10;
+                if (Input.GetKeyDown(KeyCode.Q))
+                    moveBy = 11;
+                if (Input.GetKeyDown(KeyCode.E))
+                    moveBy = 12;
             }
         }
         if (moveTo != null && selectionMade)
