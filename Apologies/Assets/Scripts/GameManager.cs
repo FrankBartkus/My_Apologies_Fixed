@@ -1,19 +1,32 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public int turn = 0;
     public GameObject[] board_ = new GameObject[4 * 23];
+    public GameObject[] pawns = new GameObject[4 * 3];
+    public GameObject choice1;
+    public GameObject choice2;
+    public Text text1;
+    public Text text2;
     public Color selected;
     public Color highlighted;
     public Color unSelected;
+    public int players;
     // Start is called before the first frame update
     void Start()
     {
+        text1 = choice1.GetComponent<Text>();
+        text2 = choice2.GetComponent<Text>();
+        text1.text = "";
+        text2.text = "";
         GameObject[] boards = GameObject.FindGameObjectsWithTag("Board");
-        for(int i = 0; i < 60; i++)
+        pawns = GameObject.FindGameObjectsWithTag("Player");
+        for (int i = 0; i < 60; i++)
         {
             foreach (GameObject board in boards)
             {
@@ -74,15 +87,15 @@ public class GameManager : MonoBehaviour
             }
         }
         int id = 0;
-        GameObject[] pawns = GameObject.FindGameObjectsWithTag("Player");
         foreach (GameObject pawn in pawns)
         {
             pawn.GetComponent<PawnMove>().pawnNumber = id++;
         }
+        LightBoard();
     }
-    void Update()
+    public void LightBoard()
     {
-        for (int j = 0; j < 60 + 4 * 6; j++)
+        for (int j = 0; j < 60 + 4 * 7; j++)
         {
             if (board_[j] != null)
             {
@@ -100,5 +113,17 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+    }
+    int GetColor(char c)
+    {
+        if (c == 'y')
+            return 0;
+        if (c == 'g')
+            return 1;
+        if (c == 'r')
+            return 2;
+        if (c == 'b')
+            return 3;
+        return -1;
     }
 }
